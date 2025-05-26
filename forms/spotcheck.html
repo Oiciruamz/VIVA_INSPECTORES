@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spot Check</title>
+    <link rel="stylesheet" href="../css/forms-common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../js/select-search.js"></script>
+    <style>
+        /* Estilos específicos para spotcheck */
+        h1 {
+            margin-bottom: 10px; /* Reduced margin for subtitle */
+        }
+        .form-note.header-note {
+            text-align: left; /* No longer centered for this form */
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="../index.html" style="text-decoration: none;">
+            <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo" class="logo">
+        </a>
+        <div class="user-profile">
+            <span>Inspector A</span>
+            <div class="user-icon">
+                <i class="fas fa-user" style="color: white;"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <h1>Spot Check</h1>
+        <p class="form-subtitle">(Copia)</p>
+        <p class="form-note">Aplica a trabajos donde no es requerido firma de un inspector en ningún paso, o no fue programado para inspector. Trabajos que no cumplan con eso, no cuentan como SC y serán eliminados de la estadística.</p>
+        <p class="form-note"><span class="asterisk">*</span> Obligatoria</p>
+
+        <form action="#" method="post">
+
+            <div class="form-group">
+                <label for="date">1. Date <span class="asterisk">*</span></label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="work_order">2. Work Order <span class="asterisk">*</span></label>
+                <input type="text" id="work_order" name="work_order" required>
+            </div>
+
+            <div class="form-group">
+                <p class="radio-group-label">3. Station <span class="asterisk">*</span></p>
+                <div class="radio-group">
+                    <div><input type="radio" id="station_mty" name="station" value="MTY" required><label for="station_mty">MTY</label></div>
+                    <div><input type="radio" id="station_mex" name="station" value="MEX"><label for="station_mex">MEX</label></div>
+                    <div><input type="radio" id="station_gdl" name="station" value="GDL"><label for="station_gdl">GDL</label></div>
+                    <div><input type="radio" id="station_cun" name="station" value="CUN"><label for="station_cun">CUN</label></div>
+                    <div><input type="radio" id="station_tij" name="station" value="TIJ"><label for="station_tij">TIJ</label></div>
+                    <div><input type="radio" id="station_bjx" name="station" value="BJX"><label for="station_bjx">BJX</label></div>
+                    <div><input type="radio" id="station_cuu" name="station" value="CUU"><label for="station_cuu">CUU</label></div>
+                    <div><input type="radio" id="station_nlu" name="station" value="NLU"><label for="station_nlu">NLU</label></div>
+                    <div><input type="radio" id="station_tlc" name="station" value="TLC"><label for="station_tlc">TLC</label></div>
+                    <div><input type="radio" id="station_mid" name="station" value="MID"><label for="station_mid">MID</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inspector">4. Inspector <span class="asterisk">*</span></label>
+                <select id="inspector" name="inspector" required>
+                    <option value="" disabled selected>Seleccione un inspector</option>
+                    <option value="Julio Acosta">Julio Acosta</option>
+                    <option value="Reynol Aguilar">Reynol Aguilar</option>
+                    <option value="Juan Briones">Juan Briones</option>
+                    <option value="Juan Cabello">Juan Cabello</option>
+                    <option value="Victor Carranza">Victor Carranza</option>
+                    <option value="Fabian Cavazos">Fabian Cavazos</option>
+                    <option value="Carlos De la Teja">Carlos De la Teja</option>
+                    <option value="Mario De los Reyes">Mario De los Reyes</option>
+                    <option value="Roberto Diaz">Roberto Diaz</option>
+                    <option value="Leonardo Galvan">Leonardo Galvan</option>
+                    <option value="Juan Gabriel Garcia">Juan Gabriel Garcia</option>
+                    <option value="Mario Edwin Garcia">Mario Edwin Garcia</option>
+                    <option value="Abel Garrido">Abel Garrido</option>
+                    <option value="Noe Gomez">Noe Gomez</option>
+                    <option value="Manuel Gonzalez">Manuel Gonzalez</option>
+                    <option value="Mariano Iracheta">Mariano Iracheta</option>
+                    <option value="Eduin Ledezma">Eduin Ledezma</option>
+                    <option value="Eduardo Lemus">Eduardo Lemus</option>
+                    <option value="Roberto Macias">Roberto Macias</option>
+                    <option value="Marcos Miranda">Marcos Miranda</option>
+                    <option value="Margarita Otero">Margarita Otero</option>
+                    <option value="Edgar Perez">Edgar Perez</option>
+                    <option value="Juan Gabriel Quintero">Juan Gabriel Quintero</option>
+                    <option value="Carlos Ramirez">Carlos Ramirez</option>
+                    <option value="Raul Ramirez">Raul Ramirez</option>
+                    <option value="Andre Richaud">Andre Richaud</option>
+                    <option value="Armando Rodarte">Armando Rodarte</option>
+                    <option value="Victor Rubio">Victor Rubio</option>
+                    <option value="Carlos Erick Ruiz">Carlos Erick Ruiz</option>
+                    <option value="Daniel Sala">Daniel Sala</option>
+                    <option value="Lorena Ugalde">Lorena Ugalde</option>
+                    <option value="Rodolfo Zendejas">Rodolfo Zendejas</option>
+                    <option value="Abraham Ramos">Abraham Ramos</option>
+                    <option value="Adan Rendon Florentino">Adan Rendon Florentino</option>
+                    <option value="Aldo Joel Torres">Aldo Joel Torres</option>
+                    <option value="Sergio Sanchez Sanchez">Sergio Sanchez Sanchez</option>
+                    <option value="Omar Eli Sánchez">Omar Eli Sánchez</option>
+                    <option value="Juan Antonio Mendoza">Juan Antonio Mendoza</option>
+                    <option value="Daniel Cerino">Daniel Cerino</option>
+                    <option value="Francisco Ayala">Francisco Ayala</option>
+                    <option value="Kenton Fernando González">Kenton Fernando González</option>
+                    <option value="Omar Vicenteño">Omar Vicenteño</option>
+                    <option value="Óscar Alejandro Sánchez Zárate">Óscar Alejandro Sánchez Zárate</option>
+                    <option value="Luis Alejandro Brambila Gamboa">Luis Alejandro Brambila Gamboa</option>
+                    <option value="Jaime Leza">Jaime Leza</option>
+                    <option value="José Granados">José Granados</option>
+                    <option value="Héctor Marin">Héctor Marin</option>
+                    <option value="Luis Zavala">Luis Zavala</option>
+                    <option value="Jose Roberto Barrera">Jose Roberto Barrera</option>
+                    <option value="Alfredo Infante">Alfredo Infante</option>
+                    <option value="Mario Alberto Espinosa">Mario Alberto Espinosa</option>
+                    <option value="Florentino De Jesus De Jesus">Florentino De Jesus De Jesus</option>
+                    <option value="Noe Campero">Noe Campero</option>
+                    <option value="Jaime Madrid">Jaime Madrid</option>
+                    <option value="Jesus Gomez">Jesus Gomez</option>
+                    <option value="Emedel de Los Santos">Emedel de Los Santos</option>
+                    <option value="Rafael Velasco">Rafael Velasco</option>
+                    <option value="Adalberto Gonzalez">Adalberto Gonzalez</option>
+                    <option value="David Martinez">David Martinez</option>
+                    <option value="Luis Novoa">Luis Novoa</option>
+                    <option value="Rafael Mendoza">Rafael Mendoza</option>
+                    <option value="Fernando Herrera">Fernando Herrera</option>
+                    <option value="Ulises Marquez">Ulises Marquez</option>
+                    <option value="Jose Quilantan">Jose Quilantan</option>
+                    <option value="Jose Everardo Campos">Jose Everardo Campos</option>
+                    <option value="Gustavo Cabrera">Gustavo Cabrera</option>
+                    <option value="Hector Ruiz">Hector Ruiz</option>
+                    <option value="Isaac Collin">Isaac Collin</option>
+                    <option value="Ricardo Zaragoza">Ricardo Zaragoza</option>
+                    <option value="Jose Angel Monaco">Jose Angel Monaco</option>
+                    <option value="Sergio Camacho">Sergio Camacho</option>
+                    <option value="Ricardo Castaneda">Ricardo Castaneda</option>
+                    <option value="Fausto García">Fausto García</option>
+                    <option value="Erick Ismael Rodriguez Gomez">Erick Ismael Rodriguez Gomez</option>
+                    <option value="Ernesto Garcia Alejandre">Ernesto Garcia Alejandre</option>
+                    <option value="Anibal Reyes">Anibal Reyes</option>
+                    <option value="Luis Carlos Rodriguez">Luis Carlos Rodriguez</option>
+                    <option value="Pablo Cesar Lugo">Pablo Cesar Lugo</option>
+                    <option value="Roberto Duran">Roberto Duran</option>
+                    <option value="Irán Darío Fuentes">Irán Darío Fuentes</option>
+                    <option value="Jose Miguel Hernandez">Jose Miguel Hernandez</option>
+                    <option value="Víctor Gómez">Víctor Gómez</option>
+                    <option value="Eloy Rosas Esparza">Eloy Rosas Esparza</option>
+                    <option value="Isaias Diaz Mijares">Isaias Diaz Mijares</option>
+                    <option value="Rodrigo Daniel Aguilera">Rodrigo Daniel Aguilera</option>
+                    <option value="Alejandro Lopez Ortega">Alejandro Lopez Ortega</option>
+                    <option value="Alain Gabriel Cuellar">Alain Gabriel Cuellar</option>
+                    <option value="Carlos Daniel Zamudio">Carlos Daniel Zamudio</option>
+                    <option value="Luis Carlos Espinoza">Luis Carlos Espinoza</option>
+                    <option value="Armando Rafael Pérez">Armando Rafael Pérez</option>
+                    <option value="Luis Daniel Romero">Luis Daniel Romero</option>
+                    <option value="Erick Alejandro Velázquez Jaime">Erick Alejandro Velázquez Jaime</option>
+                    <option value="Miguel Angel Paez">Miguel Angel Paez</option>
+                    <option value="Migue Angel Torres Reyes">Migue Angel Torres Reyes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="email_inspector">5. E-mail Inspector <span class="asterisk">*</span></label>
+                <input type="email" id="email_inspector" name="email_inspector" required placeholder="Coloque acá su correo electrónico">
+            </div>
+
+            <div class="form-group">
+                <label for="ata_4d">6. 4D ATA <span class="asterisk">*</span></label>
+                <input type="text" id="ata_4d" name="ata_4d" required placeholder="Example: 21-30, 32-40, 33-10">
+            </div>
+
+            <div class="form-group">
+                <p class="radio-group-label">7. Discrepancy detected? <span class="asterisk">*</span></p>
+                <div class="radio-group">
+                    <div><input type="radio" id="discrepancy_yes" name="discrepancy_detected" value="Yes" required><label for="discrepancy_yes">Yes</label></div>
+                    <div><input type="radio" id="discrepancy_no" name="discrepancy_detected" value="No"><label for="discrepancy_no">No</label></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="technician_job">8. Technician who perform the Job <span class="asterisk">*</span></label>
+                <input type="email" id="technician_job" name="technician_job" required placeholder="example:johndb@vivaaerobus.com">
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="footer-text">
+            Este contenido no está creado ni respaldado por Microsoft. Los datos que envíe se enviarán al propietario del formulario.
+            <div class="microsoft-forms-logo">
+                <!-- <img src="path/to/ms-forms-logo.svg" alt="Microsoft Forms"> -->
+                <span>Microsoft Forms Inspired</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

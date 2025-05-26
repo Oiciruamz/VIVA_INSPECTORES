@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eddy Current Test Form (NDT-003, Rev 2)</title>
+    <link rel="stylesheet" href="../css/forms-common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script  src="../js/select-search.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="../index.html" style="text-decoration: none;">
+            <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo" class="logo">
+        </a>
+        <div class="user-profile">
+            <span>Inspector A</span>
+            <div class="user-icon">
+                <i class="fas fa-user" style="color: white;"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <h1>Eddy Current Test Form (NDT-003, Rev 2)</h1>
+        <p class="form-note header-note">(Copia)</p>
+        <p class="form-note"><span class="asterisk">*</span> Obligatoria</p>
+
+        <form action="#" method="post">
+
+            <div class="form-group">
+                <label for="nombre_registrado"><span class="asterisk">*</span> Este formulario registrará su nombre, escriba su nombre.</label>
+                <input type="text" id="nombre_registrado" name="nombre_registrado" required>
+            </div>
+
+            <fieldset>
+                <legend>General Information</legend>
+
+                <div class="form-group">
+                    <label for="et_work_order">1. ET Work Order <span class="asterisk">*</span></label>
+                    <input type="text" id="et_work_order" name="et_work_order" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="et_ac_registration">2. ET A/C Registration <span class="asterisk">*</span></label>
+                    <select id="et_ac_registration" name="et_ac_registration" required>
+                        <option value="" disabled selected>Seleccione una matrícula</option>
+                        <option value="XA-VAA">XA-VAA</option>
+                        <option value="XA-VAB">XA-VAB</option>
+                        <option value="XA-VAC">XA-VAC</option>
+                        <option value="XA-VAE">XA-VAE</option>
+                        <option value="XA-VAI">XA-VAI</option>
+                        <option value="XA-VAJ">XA-VAJ</option>
+                        <option value="XA-VAK">XA-VAK</option>
+                        <option value="XA-VAM">XA-VAM</option>
+                        <option value="XA-VAN">XA-VAN</option>
+                        <option value="XA-VAO">XA-VAO</option>
+                        <option value="XA-VAP">XA-VAP</option>
+                        <option value="XA-VAQ">XA-VAQ</option>
+                        <option value="XA-VAR">XA-VAR</option>
+                        <option value="XA-VAT">XA-VAT</option>
+                        <option value="XA-VAU">XA-VAU</option>
+                        <option value="XA-VAV">XA-VAV</option>
+                        <option value="XA-VAW">XA-VAW</option>
+                        <option value="XA-VAX">XA-VAX</option>
+                        <option value="XA-VAY">XA-VAY</option>
+                        <option value="XA-VBA">XA-VBA</option>
+                        <option value="XA-VBB">XA-VBB</option>
+                        <option value="XA-VBH">XA-VBH</option>
+                        <option value="XA-VBI">XA-VBI</option>
+                        <option value="XA-VBJ">XA-VBJ</option>
+                        <option value="XA-VBK">XA-VBK</option>
+                        <option value="XA-VBM">XA-VBM</option>
+                        <option value="XA-VBN">XA-VBN</option>
+                        <option value="XA-VBP">XA-VBP</option>
+                        <option value="XA-VBQ">XA-VBQ</option>
+                        <option value="XA-VBR">XA-VBR</option>
+                        <option value="XA-VBS">XA-VBS</option>
+                        <option value="XA-VBT">XA-VBT</option>
+                        <option value="XA-VBU">XA-VBU</option>
+                        <option value="XA-VBV">XA-VBV</option>
+                        <option value="XA-VBW">XA-VBW</option>
+                        <option value="XA-VBX">XA-VBX</option>
+                        <option value="XA-VBY">XA-VBY</option>
+                        <option value="XA-VBZ">XA-VBZ</option>
+                        <option value="XA-CCC">XA-CCC</option>
+                        <option value="XA-VCC">XA-VCC</option>
+                        <option value="XA-VIA">XA-VIA</option>
+                        <option value="XA-VIB">XA-VIB</option>
+                        <option value="XA-VIE">XA-VIE</option>
+                        <option value="XA-VIF">XA-VIF</option>
+                        <option value="XA-VIH">XA-VIH</option>
+                        <option value="XA-VII">XA-VII</option>
+                        <option value="XA-VIJ">XA-VIJ</option>
+                        <option value="XA-VIK">XA-VIK</option>
+                        <option value="XA-VIL">XA-VIL</option>
+                        <option value="XA-VIM">XA-VIM</option>
+                        <option value="XA-VIN">XA-VIN</option>
+                        <option value="XA-VIO">XA-VIO</option>
+                        <option value="XA-VIQ">XA-VIQ</option>
+                        <option value="XA-VIR">XA-VIR</option>
+                        <option value="XA-VIS">XA-VIS</option>
+                        <option value="XA-VIT">XA-VIT</option>
+                        <option value="XA-VIU">XA-VIU</option>
+                        <option value="XA-VIV">XA-VIV</option>
+                        <option value="XA-VIW">XA-VIW</option>
+                        <option value="XA-VIX">XA-VIX</option>
+                        <option value="XA-VXA">XA-VXA</option>
+                        <option value="XA-VXB">XA-VXB</option>
+                        <option value="XA-VXC">XA-VXC</option>
+                        <option value="XA-VXD">XA-VXD</option>
+                        <option value="XA-VXE">XA-VXE</option>
+                        <option value="XA-VXF">XA-VXF</option>
+                        <option value="XA-VXG">XA-VXG</option>
+                        <option value="XA-VXH">XA-VXH</option>
+                        <option value="XA-VXI">XA-VXI</option>
+                        <option value="XA-VXJ">XA-VXJ</option>
+                        <option value="XA-VXK">XA-VXK</option>
+                        <option value="XA-VXL">XA-VXL</option>
+                        <option value="XA-VXM">XA-VXM</option>
+                        <option value="XA-VXN">XA-VXN</option>
+                        <option value="XA-VXO">XA-VXO</option>
+                        <option value="XA-VXP">XA-VXP</option>
+                        <option value="XA-VYA">XA-VYA</option>
+                        <option value="XA-VYB">XA-VYB</option>
+                        <option value="XA-VYD">XA-VYD</option>
+                        <option value="XA-VYE">XA-VYE</option>
+                        <option value="XA-VXS">XA-VXS</option>
+                        <option value="XA-VYF">XA-VYF</option>
+                        <option value="N/A">N/A</option>
+                        <option value="XA-VDG">XA-VDG</option>
+                        <option value="XA-VXT">XA-VXT</option>
+                        <option value="XA-VMD">XA-VMD</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <p class="radio-group-label">3. ET Station <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="et_station_mty" name="et_station" value="MTY" required><label for="et_station_mty">MTY</label></div>
+                        <div><input type="radio" id="et_station_mex" name="et_station" value="MEX"><label for="et_station_mex">MEX</label></div>
+                        <div><input type="radio" id="et_station_gdl" name="et_station" value="GDL"><label for="et_station_gdl">GDL</label></div>
+                        <div><input type="radio" id="et_station_cun" name="et_station" value="CUN"><label for="et_station_cun">CUN</label></div>
+                        <div><input type="radio" id="et_station_tij" name="et_station" value="TIJ"><label for="et_station_tij">TIJ</label></div>
+                        <div><input type="radio" id="et_station_other" name="et_station" value="Other"><label for="et_station_other">Other</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="et_part_number_if_apply">4. ET Part Number (If Apply) <span class="asterisk">*</span></label>
+                    <input type="text" id="et_part_number_if_apply" name="et_part_number_if_apply" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="et_date">5. ET Date <span class="asterisk">*</span></label>
+                    <input type="date" id="et_date" name="et_date" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Equipment Used</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">6. ET Manufacturer EQ <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="et_manufacturer_ge" name="et_manufacturer_eq" value="General Electric" required><label for="et_manufacturer_ge">General Electric</label></div>
+                        <div><input type="radio" id="et_manufacturer_olympus" name="et_manufacturer_eq" value="Olympus"><label for="et_manufacturer_olympus">Olympus</label></div>
+                        <div><input type="radio" id="et_manufacturer_testia" name="et_manufacturer_eq" value="Testia"><label for="et_manufacturer_testia">Testia</label></div>
+                        <div><input type="radio" id="et_manufacturer_other" name="et_manufacturer_eq" value="Other"><label for="et_manufacturer_other">Other</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="radio-group-label">7. ET Part Number EQ <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="et_part_eq_mentor" name="et_part_number_eq" value="Mentor" required><label for="et_part_eq_mentor">Mentor</label></div>
+                        <div><input type="radio" id="et_part_eq_n500d" name="et_part_number_eq" value="N500D-C-E-U"><label for="et_part_eq_n500d">N500D-C-E-U</label></div>
+                        <div><input type="radio" id="et_part_eq_te_ue1kit" name="et_part_number_eq" value="TE-UE1KIT-D-B"><label for="et_part_eq_te_ue1kit">TE-UE1KIT-D-B</label></div>
+                        <div><input type="radio" id="et_part_eq_nortec600" name="et_part_number_eq" value="Nortec-600"><label for="et_part_eq_nortec600">Nortec-600</label></div>
+                        <div><input type="radio" id="et_part_eq_other" name="et_part_number_eq" value="Other"><label for="et_part_eq_other">Other</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="et_serial_number_eq">8. ET Serial Number Eq <span class="asterisk">*</span></label>
+                    <select id="et_serial_number_eq" name="et_serial_number_eq" required>
+                        <option value="" disabled selected>Seleccione un número de serie</option>
+                        <option value="14E0242N">14E0242N</option>
+                        <option value="15J01MCU">15J01MCU</option>
+                        <option value="N500X11290U011694">N500X11290U011694</option>
+                        <option value="CLAD-190125-001">CLAD-190125-001</option>
+                        <option value="220247710">220247710</option>
+                        <option value="220287312">220287312</option>
+                        <option value="UE1N-220038">UE1N-220038</option>
+                        <option value="240448101">240448101</option>
+                        <option value="230385309">230385309</option>
+                        <option value="240450402">240450402</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="et_calibration_due_date_eq">9. ET Calibration Due Date EQ <span class="asterisk">*</span></label>
+                    <input type="date" id="et_calibration_due_date_eq" name="et_calibration_due_date_eq" required>
+                    <p class="form-note" style="font-size: 0.8em; margin-top: 5px;">Must Be greater than today</p>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Probe</legend>
+                <div class="form-group">
+                    <label for="et_manufacturer_probe">10. ET Manufacturer Probe <span class="asterisk">*</span></label>
+                    <input type="text" id="et_manufacturer_probe" name="et_manufacturer_probe" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_part_number_probe">11. ET Part Number Probe <span class="asterisk">*</span></label>
+                    <input type="text" id="et_part_number_probe" name="et_part_number_probe" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_serial_number_probe">12. ET Serial Number Probe <span class="asterisk">*</span></label>
+                    <input type="text" id="et_serial_number_probe" name="et_serial_number_probe" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_frequency_probe">13. ET Frequency Probe <span class="asterisk">*</span></label>
+                    <input type="text" id="et_frequency_probe" name="et_frequency_probe" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Reference Standard</legend>
+                <div class="form-group">
+                    <label for="et_manufacturer_rs">14. ET Manufacturer RS <span class="asterisk">*</span></label>
+                    <input type="text" id="et_manufacturer_rs" name="et_manufacturer_rs" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_part_number_rs">15. ET Part Number RS <span class="asterisk">*</span></label>
+                    <input type="text" id="et_part_number_rs" name="et_part_number_rs" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_serial_number_rs">16. ET Serial Number RS <span class="asterisk">*</span></label>
+                    <input type="text" id="et_serial_number_rs" name="et_serial_number_rs" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_due_date_rs">17. ET Due Date RS (If Apply)</label>
+                    <input type="text" id="et_due_date_rs" name="et_due_date_rs">
+                </div>
+                <div class="form-group">
+                    <label for="et_material_rs">18. ET Material RS <span class="asterisk">*</span></label>
+                    <input type="text" id="et_material_rs" name="et_material_rs" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Inspection Data</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">19. Type of ET <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="type_et_hfec" name="type_of_et" value="HFEC" required><label for="type_et_hfec">HFEC</label></div>
+                        <div><input type="radio" id="type_et_lfec" name="type_of_et" value="LFEC"><label for="type_et_lfec">LFEC</label></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="et_calibration_iacs">20. ET CALIBRATION IACS % <span class="asterisk">*</span></label>
+                    <input type="text" id="et_calibration_iacs" name="et_calibration_iacs" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_frequency_hz">21. Frequency (Hz) <span class="asterisk">*</span></label>
+                    <input type="text" id="et_frequency_hz" name="et_frequency_hz" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_gain">22. Gain (X:Y) <span class="asterisk">*</span></label>
+                    <input type="text" id="et_gain" name="et_gain" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_phase">23. ET Phase (°) <span class="asterisk">*</span></label>
+                    <input type="text" id="et_phase" name="et_phase" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_filters">24. Filters (HP:LP) Hz <span class="asterisk">*</span></label>
+                    <input type="text" id="et_filters" name="et_filters" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Results of inspection</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">25. ET Indication <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="et_indication_yes" name="et_indication" value="Yes" required><label for="et_indication_yes">Yes</label></div>
+                        <div><input type="radio" id="et_indication_no" name="et_indication" value="No"><label for="et_indication_no">No</label></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">26. Type of Damage <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="damage_crack" name="type_of_damage" value="Crack" required><label for="damage_crack">Crack</label></div>
+                        <div><input type="radio" id="damage_corrosion" name="type_of_damage" value="Corrosion"><label for="damage_corrosion">Corrosion</label></div>
+                        <div><input type="radio" id="damage_discontinuity" name="type_of_damage" value="Discontinuity"><label for="damage_discontinuity">Discontinuity</label></div>
+                        <div><input type="radio" id="damage_na" name="type_of_damage" value="N/A"><label for="damage_na">N/A</label></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="et_location">27. ET Location (Ref: X/Y) <span class="asterisk">*</span></label>
+                    <input type="text" id="et_location" name="et_location" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_amplitude">28. Amplitude (%) <span class="asterisk">*</span></label>
+                    <input type="text" id="et_amplitude" name="et_amplitude" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_length">29. Length (mm) <span class="asterisk">*</span></label>
+                    <input type="text" id="et_length" name="et_length" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_width">30. Width (mm) <span class="asterisk">*</span></label>
+                    <input type="text" id="et_width" name="et_width" required>
+                </div>
+                <div class="form-group">
+                    <label for="et_depth">31. Depth (mm) <span class="asterisk">*</span></label>
+                    <input type="text" id="et_depth" name="et_depth" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Final Status</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">32. Final Status ET <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="final_status_pass" name="final_status_et" value="Pass" required><label for="final_status_pass">Pass</label></div>
+                        <div><input type="radio" id="final_status_no_pass" name="final_status_et" value="No Pass"><label for="final_status_no_pass">No Pass</label></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="acceptance_criteria_et">33. Acceptance Criteria ET <span class="asterisk">*</span></label>
+                    <input type="text" id="acceptance_criteria_et" name="acceptance_criteria_et" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Inspector and Additional Data</legend>
+                <div class="form-group">
+                    <label for="inspector_perform_inspection">34. Inspector who perform Inspection <span class="asterisk">*</span></label>
+                    <select id="inspector_perform_inspection" name="inspector_perform_inspection" required>
+                        <option value="" disabled selected>Seleccione un inspector</option>
+                        <option value="Reynol Aguilar">Reynol Aguilar</option>
+                        <option value="Francisco Ayala">Francisco Ayala</option>
+                        <option value="Juan Briones">Juan Briones</option>
+                        <option value="Juan Cabello">Juan Cabello</option>
+                        <option value="Victor Carranza">Victor Carranza</option>
+                        <option value="Daniel Cerino">Daniel Cerino</option>
+                        <option value="Roberto Diaz">Roberto Diaz</option>
+                        <option value="Abel Garrido">Abel Garrido</option> <!-- Aparece dos veces, lo incluyo una vez -->
+                        <option value="Mariano Iracheta">Mariano Iracheta</option>
+                        <option value="Margarita Otero">Margarita Otero</option>
+                        <option value="Carlos Ramirez">Carlos Ramirez</option>
+                        <option value="Edgar Perez">Edgar Perez</option>
+                        <option value="Raul Ramirez">Raul Ramirez</option>
+                        <option value="Abraham Ramos">Abraham Ramos</option>
+                        <option value="Armando Rodarte">Armando Rodarte</option>
+                        <option value="Victor Rubio">Victor Rubio</option>
+                        <option value="Daniel Sala">Daniel Sala</option>
+                        <option value="Lorena Ugalde">Lorena Ugalde</option>
+                        <!-- Reynol Aguilar ya está listado -->
+                        <option value="Fabian Cavazos">Fabian Cavazos</option>
+                        <option value="Kenton Rosales">Kenton Rosales</option>
+                        <option value="Luis Zabala">Luis Zabala</option>
+                        <option value="Daniel Diaz">Daniel Diaz</option>
+                        <option value="Aldo Torres">Aldo Torres</option>
+                        <option value="Noe Campero">Noe Campero</option>
+                        <option value="Rafael Velazco">Rafael Velazco</option>
+                        <option value="Alfredo Infante">Alfredo Infante</option>
+                        <option value="Erick Ruiz">Erick Ruiz</option>
+                        <option value="Sergio Sanchez">Sergio Sanchez</option>
+                        <option value="Manuel Gonzalez">Manuel Gonzalez</option>
+                        <option value="Luis Brambila">Luis Brambila</option>
+                        <option value="Rodolfo Zendejas">Rodolfo Zendejas</option>
+                        <!-- Abel Garrido ya está listado -->
+                        <option value="Roberto Barrera">Roberto Barrera</option>
+                        <option value="Fernando Herrera">Fernando Herrera</option>
+                        <option value="Luis Navoa">Luis Navoa</option>
+                        <option value="Luis Enrique Garcia">Luis Enrique Garcia</option>
+                        <option value="Ricardo Castañeda">Ricardo Castañeda</option>
+                        <option value="Emedel de Los Santos">Emedel de Los Santos</option>
+                        <option value="Jose Luis Quilantan">Jose Luis Quilantan</option>
+                        <option value="Oscar Alejandro Sanchez">Oscar Alejandro Sanchez</option>
+                        <option value="Hector Marin">Hector Marin</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inspector_email">35. Put your e-mail <span class="asterisk">*</span></label>
+                    <select id="inspector_email" name="inspector_email" required>
+                        <option value="" disabled selected>Seleccione su e-mail</option>
+                        <option value="francisco.ayala@vivaaerobus.com">francisco.ayala@vivaaerobus.com</option>
+                        <option value="juan.briones@vivaaerobus.com">juan.briones@vivaaerobus.com</option>
+                        <option value="juan.cabello@vivaaerobus.com">juan.cabello@vivaaerobus.com</option>
+                        <option value="victor.carranza@vivaaerobus.com">victor.carranza@vivaaerobus.com</option>
+                        <option value="daniel.cerino@vivaaerobus.com">daniel.cerino@vivaaerobus.com</option>
+                        <option value="roberto.diaz@vivaaerobus.com">roberto.diaz@vivaaerobus.com</option>
+                        <option value="mariano.iracheta@vivaaerobus.com">mariano.iracheta@vivaaerobus.com</option>
+                        <option value="margarita.otero@vivaaerobus.com">margarita.otero@vivaaerobus.com</option>
+                        <option value="edgar.perez@vivaaerobus.com">edgar.perez@vivaaerobus.com</option>
+                        <option value="abraham.ramos@vivaaerobus.com">abraham.ramos@vivaaerobus.com</option>
+                        <option value="carlos.ramirez@vivaaerobus.com">carlos.ramirez@vivaaerobus.com</option>
+                        <option value="raul.ramirez@vivaaerobus.com">raul.ramirez@vivaaerobus.com</option>
+                        <option value="armando.rodarte@vivaaerobus.com">armando.rodarte@vivaaerobus.com</option>
+                        <option value="victor.rubio@vivaaerobus.com">victor.rubio@vivaaerobus.com</option>
+                        <option value="daniel.sala@vivaaerobus.com">daniel.sala@vivaaerobus.com</option>
+                        <option value="lorena.ugalde@vivaaerobus.com">lorena.ugalde@vivaaerobus.com</option>
+                        <option value="reynol.aguilar@vivaaerobus.com">reynol.aguilar@vivaaerobus.com</option>
+                        <option value="fabian.cavazos@vivaaerobus.com">fabian.cavazos@vivaaerobus.com</option>
+                        <option value="kenton.rosales@vivaaerobus.com">kenton.rosales@vivaaerobus.com</option>
+                        <option value="luis.zavala@vivaaerobus.com">luis.zavala@vivaaerobus.com</option>
+                        <option value="daniel.diaz@vivaaerobus.com">daniel.diaz@vivaaerobus.com</option>
+                        <option value="aldo.torres@vivaaerobus.com">aldo.torres@vivaaerobus.com</option>
+                        <option value="jose.campero@vivaaerobus.com">jose.campero@vivaaerobus.com</option>
+                        <option value="alfredo.infante@vivaaerobus.com">alfredo.infante@vivaaerobus.com</option>
+                        <option value="erick.ruiz@vivaaerobus.com">erick.ruiz@vivaaerobus.com</option>
+                        <option value="sergio.sanchez@vivaaerobus.com">sergio.sanchez@vivaaerobus.com</option>
+                        <option value="rafael.velazco@vivaaerobus.com">rafael.velazco@vivaaerobus.com</option>
+                        <option value="manuel.gonzalez@vivaaerobus.com">manuel.gonzalez@vivaaerobus.com</option>
+                        <option value="luis.brambila@vivaaerobus.com">luis.brambila@vivaaerobus.com</option>
+                        <option value="rodolfo.zendejas@vivaaerobus.com">rodolfo.zendejas@vivaaerobus.com</option>
+                        <option value="abel.garrido@vivaaerobus.com">abel.garrido@vivaaerobus.com</option>
+                        <option value="jose.barrera@vivaaerobus.com">jose.barrera@vivaaerobus.com</option>
+                        <option value="fernando.herrera@vivaaerobus.com">fernando.herrera@vivaaerobus.com</option>
+                        <option value="enrique.garcia@vivaaerobus.com">enrique.garcia@vivaaerobus.com</option>
+                        <option value="jose.jaime@vivaaerobus.com">jose.jaime@vivaaerobus.com</option>
+                        <option value="ricardo.castaneda@vivaaerobus.com">ricardo.castaneda@vivaaerobus.com</option>
+                        <option value="emedel.delossantos@vivaaerobus.com">emedel.delossantos@vivaaerobus.com</option>
+                        <option value="oscar.sanchez@vivaaerobus.com">oscar.sanchez@vivaaerobus.com</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <p class="radio-group-label">36. Qualification Level <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="qual_trainee" name="qualification_level" value="Trainee" required><label for="qual_trainee">Trainee</label></div>
+                        <div><input type="radio" id="qual_level1" name="qualification_level" value="Level 1"><label for="qual_level1">Level 1</label></div>
+                        <div><input type="radio" id="qual_level2" name="qualification_level" value="Level 2"><label for="qual_level2">Level 2</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="et_level2_approval">37. ET Level 2 Approval <span class="asterisk">*</span></label>
+                    <select id="et_level2_approval" name="et_level2_approval" required>
+                        <option value="" disabled selected>Seleccione aprobación Nivel 2</option>
+                        <option value="Daniel Sala (NDT-001)">Daniel Sala (NDT-001)</option>
+                        <option value="Raul Ramirez (NDT-003)">Raul Ramirez (NDT-003)</option>
+                        <option value="Mariano Iracheta (NDT-005)">Mariano Iracheta (NDT-005)</option>
+                        <option value="Victor Carranza (NDT-008)">Victor Carranza (NDT-008)</option>
+                        <option value="Roberto Diaz (NDT-009)">Roberto Diaz (NDT-009)</option>
+                        <option value="Lorena Ugalde (NDT-014)">Lorena Ugalde (NDT-014)</option>
+                        <option value="Armando Rodarte (NDT-013)">Armando Rodarte (NDT-013)</option>
+                        <option value="Carlos Ramirez (NDT-011)">Carlos Ramirez (NDT-011)</option>
+                        <option value="Hector Marin (NDT-017)">Hector Marin (NDT-017)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="et_level2_stamp">38. ET Level 2 Stamp <span class="asterisk">*</span></label>
+                    <select id="et_level2_stamp" name="et_level2_stamp" required>
+                        <option value="" disabled selected>Seleccione sello Nivel 2</option>
+                        <option value="NDT-001">NDT-001</option>
+                        <option value="NDT-003">NDT-003</option>
+                        <option value="NDT-005">NDT-005</option>
+                        <option value="NDT-008">NDT-008</option>
+                        <option value="NDT-009">NDT-009</option>
+                        <option value="NDT-011">NDT-011</option>
+                        <option value="NDT-013">NDT-013</option>
+                        <option value="NDT-014">NDT-014</option>
+                        <option value="NDT-017">NDT-017</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="et_level2_email">39. ET Level 2 E-mail <span class="asterisk">*</span></label>
+                    <select id="et_level2_email" name="et_level2_email" required>
+                        <option value="" disabled selected>Seleccione e-mail Nivel 2</option>
+                        <option value="daniel.sala@vivaaerobus.com">daniel.sala@vivaaerobus.com</option>
+                        <option value="raul.ramirez@vivaaerobus.com">raul.ramirez@vivaaerobus.com</option>
+                        <option value="mariano.iracheta@vivaaerobus.com">mariano.iracheta@vivaaerobus.com</option>
+                        <option value="victor.carranza@vivaaerobus.com">victor.carranza@vivaaerobus.com</option>
+                        <option value="armando.rodarte@vivaaerobus.com">armando.rodarte@vivaaerobus.com</option>
+                        <option value="roberto.diaz@vivaaerobus.com">roberto.diaz@vivaaerobus.com</option>
+                        <option value="lorena.ugalde@vivaaerobus.com">lorena.ugalde@vivaaerobus.com</option>
+                        <option value="carlos.ramirez@vivaaerobus.com">carlos.ramirez@vivaaerobus.com</option>
+                        <option value="hector.marin@vivaaerobus.com">hector.marin@vivaaerobus.com</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="ndt_time_elapsed">40. NDT Time Elapsed (Hours) <span class="asterisk">*</span></label>
+                    <input type="number" id="ndt_time_elapsed" name="ndt_time_elapsed" min="0" step="0.1" required placeholder="Ej: 2.5">
+                </div>
+
+                <div class="form-group">
+                    <label for="reference_used_final">41. Reference Used <span class="asterisk">*</span></label>
+                    <input type="text" id="reference_used_final" name="reference_used_final" required>
+                </div>
+            </fieldset>
+
+            <button type="submit">Submit Report</button>
+        </form>
+
+        <div class="footer-text">
+            Este contenido no está creado ni respaldado por Microsoft. Los datos que envíe se enviarán al propietario del formulario.
+            <div class="microsoft-forms-logo">
+                <!-- <img src="path/to/ms-forms-logo.svg" alt="Microsoft Forms"> -->
+                <span>Microsoft Forms Inspired</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

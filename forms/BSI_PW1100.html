@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSI Report Form (PW 1100 ENGINES)</title>
+    <link rel="stylesheet" href="../css/forms-common.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="../js/select-search.js"></script>
+    <script src="../js/form-handlers/BSI_PW1100_Handler.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="../index.html" style="text-decoration: none;">
+            <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo" class="logo">
+        </a>
+        <div class="user-profile">
+            <span>Inspector A</span>
+            <div class="user-icon">
+                <i class="fas fa-user" style="color: black;"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <h1>BSI Report Form (PW 1100 ENGINES)</h1>
+        <p class="form-note header-note">(F-QC-018 Rev 2) (Copia)</p>
+        <p class="form-note"><span class="asterisk">*</span> Obligatoria</p>
+
+        <form action="#" method="post">
+
+            <div class="form-group">
+                <label for="nombre_registrado"><span class="asterisk">*</span> Este formulario registrará su nombre, escriba su nombre.</label>
+                <input type="text" id="nombre_registrado" name="nombre_registrado" required>
+            </div>
+
+            <fieldset>
+                <legend>General Information</legend>
+
+                <div class="form-group">
+                    <label for="work_order_number">1. Work Order Number <span class="asterisk">*</span></label>
+                    <input type="text" id="work_order_number" name="work_order_number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_of_bsi">2. Date of BSI <span class="asterisk">*</span></label>
+                    <input type="date" id="date_of_bsi" name="date_of_bsi" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="inspected_by">3. Inspected By <span class="asterisk">*</span></label>
+                    <select id="inspected_by" name="inspected_by" required>
+                        <option value="" disabled selected>Seleccione un inspector</option>
+                        <option value="Julio Acosta">Julio Acosta</option>
+                        <option value="Fabian Cavazos">Fabian Cavazos</option>
+                        <option value="Daniel Cerino">Daniel Cerino</option>
+                        <option value="Roberto Diaz">Roberto Diaz</option>
+                        <option value="Abel Garrido">Abel Garrido</option>
+                        <option value="Manuel Gonzalez">Manuel Gonzalez</option>
+                        <option value="Mariano Iracheta">Mariano Iracheta</option>
+                        <option value="Marcos Miranda">Marcos Miranda</option>
+                        <option value="Carlos Ramirez">Carlos Ramirez</option>
+                        <option value="Raul Ramirez">Raul Ramirez</option>
+                        <option value="Andre Richaud">Andre Richaud</option>
+                        <option value="Armando Rodarte">Armando Rodarte</option>
+                        <option value="Victor Rubio">Victor Rubio</option>
+                        <option value="Daniel Sala">Daniel Sala</option>
+                        <option value="Lorena Ugalde">Lorena Ugalde</option>
+                        <option value="Francisco Ayala">Francisco Ayala</option>
+                        <option value="Reynol Aguilar">Reynol Aguilar</option>
+                        <option value="Luis A Brambila">Luis A Brambila</option>
+                        <option value="Oscar Sanchez">Oscar Sanchez</option>
+                        <option value="Juan Gabriel Garcia">Juan Gabriel Garcia</option>
+                        <option value="Omar Vicenteño">Omar Vicenteño</option>
+                        <option value="Kenton Gonzalez">Kenton Gonzalez</option>
+                        <option value="Roberto Macias">Roberto Macias</option>
+                        <option value="Juan Cabello">Juan Cabello</option>
+                        <option value="Florentino de Jesus">Florentino de Jesus</option>
+                        <option value="Carlos Erick Ruiz">Carlos Erick Ruiz</option>
+                        <option value="Adán Rendón">Adán Rendón</option>
+                        <option value="Rafael Mendoza">Rafael Mendoza</option>
+                        <option value="Jose Angel Monaco">Jose Angel Monaco</option>
+                        <option value="Hector Hugo Marin">Hector Hugo Marin</option>
+                        <option value="Alejandro Marcos López">Alejandro Marcos López</option>
+                        <option value="Fernando Herrera">Fernando Herrera</option>
+                        <option value="Rodrigo Aguilera">Rodrigo Aguilera</option>
+                        <option value="Juan Jose Briones">Juan Jose Briones</option>
+                        <option value="Jose Roberto Barrera">Jose Roberto Barrera</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inspector_stamp">4. Inspector Stamp <span class="asterisk">*</span></label>
+                    <select id="inspector_stamp" name="inspector_stamp" required>
+                        <option value="" disabled selected>Seleccione un sello</option>
+                        <option value="QC-003">QC-003</option>
+                        <option value="QC-006">QC-006</option>
+                        <option value="QC-007">QC-007</option>
+                        <option value="QC-008">QC-008</option>
+                        <option value="QC-014">QC-014</option>
+                        <option value="QC-016">QC-016</option>
+                        <option value="QC-019">QC-019</option>
+                        <option value="QC-020">QC-020</option>
+                        <option value="QC-021">QC-021</option>
+                        <option value="QC-024">QC-024</option>
+                        <option value="QC-025">QC-025</option>
+                        <option value="QC-027">QC-027</option>
+                        <option value="QC-028">QC-028</option>
+                        <option value="QC-030">QC-030</option>
+                        <option value="QC-032">QC-032</option>
+                        <option value="QC-033">QC-033</option>
+                        <option value="QC-034">QC-034</option>
+                        <option value="QC-041">QC-041</option>
+                        <option value="QC-044">QC-044</option>
+                        <option value="QC-045">QC-045</option>
+                        <option value="QC-049">QC-049</option>
+                        <option value="QC-052">QC-052</option>
+                        <option value="QC-054">QC-054</option>
+                        <option value="QC-059">QC-059</option>
+                        <option value="QC-058">QC-058</option>
+                        <option value="QC-060">QC-060</option>
+                        <option value="QC-062">QC-062</option>
+                        <option value="QC-072">QC-072</option>
+                        <option value="QC-078">QC-078</option>
+                        <option value="QC-089">QC-089</option>
+                        <option value="QC-101">QC-101</option>
+                        <option value="QC-097">QC-097</option>
+                        <option value="QC-100">QC-100</option>
+                        <option value="QC-066">QC-066</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <p class="radio-group-label">5. Station <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="station_mty" name="station" value="MTY" required><label for="station_mty">MTY</label></div>
+                        <div><input type="radio" id="station_gdl" name="station" value="GDL"><label for="station_gdl">GDL</label></div>
+                        <div><input type="radio" id="station_mex" name="station" value="MEX"><label for="station_mex">MEX</label></div>
+                        <div><input type="radio" id="station_cun" name="station" value="CUN"><label for="station_cun">CUN</label></div>
+                        <div><input type="radio" id="station_tij" name="station" value="TIJ"><label for="station_tij">TIJ</label></div>
+                        <div><input type="radio" id="station_otras" name="station" value="Otras"><label for="station_otras">Otras</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="radio-group-label">6. BSI accomplished reason <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="bsi_reason_maintenance" name="bsi_reason" value="Maintenance Program" required><label for="bsi_reason_maintenance">Maintenance Program</label></div>
+                        <div><input type="radio" id="bsi_reason_bird_strike" name="bsi_reason" value="Bird Strike"><label for="bsi_reason_bird_strike">Bird Strike</label></div>
+                        <div><input type="radio" id="bsi_reason_engine_acceptance" name="bsi_reason" value="Engine Acceptance"><label for="bsi_reason_engine_acceptance">Engine Acceptance</label></div>
+                        <div><input type="radio" id="bsi_reason_delivery_requirement" name="bsi_reason" value="Delivery Requirement"><label for="bsi_reason_delivery_requirement">Delivery Requirement</label></div>
+                        <div><input type="radio" id="bsi_reason_troubleshooting" name="bsi_reason" value="Trouble Shooting"><label for="bsi_reason_troubleshooting">Trouble Shooting</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <p class="radio-group-label">7. Type of BSI <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="bsi_type_full" name="bsi_type" value="Full BSI" required><label for="bsi_type_full">Full BSI</label></div>
+                        <div><input type="radio" id="bsi_type_combustion" name="bsi_type" value="Combustion Chamber"><label for="bsi_type_combustion">Combustion Chamber</label></div>
+                        <div><input type="radio" id="bsi_type_hpt" name="bsi_type" value="High Pressure Turbine"><label for="bsi_type_hpt">High Pressure Turbine</label></div>
+                        <div><input type="radio" id="bsi_type_shilap" name="bsi_type" value="Shilap"><label for="bsi_type_shilap">Shilap</label></div>
+                        <div><input type="radio" id="bsi_type_otra" name="bsi_type" value="Otra"><label for="bsi_type_otra">Otra</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="references_used">8. References Used <span class="asterisk">*</span></label>
+                    <input type="text" id="references_used" name="references_used" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Aircraft Information</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">9. Aircraft Model <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="model_a320neo" name="aircraft_model" value="A320 NEO" required><label for="model_a320neo">A320 NEO</label></div>
+                        <div><input type="radio" id="model_a321neo" name="aircraft_model" value="A321 NEO"><label for="model_a321neo">A321 NEO</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="aircraft_registration">10. Aircraft Registration</label>
+                    <select id="aircraft_registration" name="aircraft_registration">
+                        <option value="" selected>Seleccione una matrícula (opcional)</option>
+                        <option value="XA-VBA">XA-VBA</option>
+                        <option value="XA-VBB">XA-VBB</option>
+                        <option value="XA-VBH">XA-VBH</option>
+                        <option value="XA-VBK">XA-VBK</option>
+                        <option value="XA-VBM">XA-VBM</option>
+                        <option value="XA-VBR">XA-VBR</option>
+                        <option value="XA-VBS">XA-VBS</option>
+                        <option value="XA-VBX">XA-VBX</option>
+                        <option value="XA-VBY">XA-VBY</option>
+                        <option value="XA-VBZ">XA-VBZ</option>
+                        <option value="XA-VIA">XA-VIA</option>
+                        <option value="XA-VIB">XA-VIB</option>
+                        <option value="XA-VIE">XA-VIE</option>
+                        <option value="XA-VIF">XA-VIF</option>
+                        <option value="XA-VIH">XA-VIH</option>
+                        <option value="XA-VII">XA-VII</option>
+                        <option value="XA-VIJ">XA-VIJ</option>
+                        <option value="XA-VIK">XA-VIK</option>
+                        <option value="XA-VIL">XA-VIL</option>
+                        <option value="XA-VIM">XA-VIM</option>
+                        <option value="XA-VIN">XA-VIN</option>
+                        <option value="XA-VIO">XA-VIO</option>
+                        <option value="XA-VIP">XA-VIP</option>
+                        <option value="XA-VIQ">XA-VIQ</option>
+                        <option value="XA-VIR">XA-VIR</option>
+                        <option value="XA-VIS">XA-VIS</option>
+                        <option value="XA-VIT">XA-VIT</option>
+                        <option value="XA-VIU">XA-VIU</option>
+                        <option value="XA-VIV">XA-VIV</option>
+                        <option value="XA-VIW">XA-VIW</option>
+                        <option value="XA-VIX">XA-VIX</option>
+                        <option value="XA-VIY">XA-VIY</option>
+                        <option value="XA-VXA">XA-VXA</option>
+                        <option value="XA-VXB">XA-VXB</option>
+                        <option value="XA-VXC">XA-VXC</option>
+                        <option value="XA-VXD">XA-VXD</option>
+                        <option value="XA-VXE">XA-VXE</option>
+                        <option value="XA-VXF">XA-VXF</option>
+                        <option value="XA-VXG">XA-VXG</option>
+                        <option value="XA-VXH">XA-VXH</option>
+                        <option value="XA-VXI">XA-VXI</option>
+                        <option value="XA-VXJ">XA-VXJ</option>
+                        <option value="XA-VXK">XA-VXK</option>
+                        <option value="XA-VXL">XA-VXL</option>
+                        <option value="XA-VXM">XA-VXM</option>
+                        <option value="XA-VXN">XA-VXN</option>
+                        <option value="XA-VXO">XA-VXO</option>
+                        <option value="XA-VXP">XA-VXP</option>
+                        <option value="XA-VXQ">XA-VXQ</option>
+                        <option value="XA-VXS">XA-VXS</option>
+                        <option value="XA-VXT">XA-VXT</option>
+                        <option value="XA-VXR">XA-VXR</option>
+                        <option value="N/A">N/A</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="engine_sn">11. Engine S/N <span class="asterisk">*</span></label>
+                    <input type="text" id="engine_sn" name="engine_sn" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Equipment Used</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">12. Boroscope Used type <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="boro_mentor_iq" name="boroscope_type" value="Mentor IQ" required><label for="boro_mentor_iq">Mentor IQ</label></div>
+                        <div><input type="radio" id="boro_olympus" name="boroscope_type" value="Olympus IV9000N"><label for="boro_olympus">Olympus IV9000N</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="boroscope_sn">13. Boroscope S/N <span class="asterisk">*</span></label>
+                    <select id="boroscope_sn" name="boroscope_sn" required>
+                        <option value="" disabled selected>Seleccione S/N Boroscopio</option>
+                        <option value="1830A9916">1830A9916</option>
+                        <option value="1541A9309">1541A9309</option>
+                        <option value="1504A2839">1504A2839</option>
+                        <option value="1852A8390">1852A8390</option>
+                        <option value="2003A5682">2003A5682</option>
+                        <option value="Y60005616.04">Y60005616.04</option>
+                        <option value="Y00248620.11">Y00248620.11</option>
+                        <option value="2315A5586">2315A5586</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="probe_sn">14. Probe S/N (If Apply) <span class="asterisk">*</span></label>
+                    <select id="probe_sn" name="probe_sn" required>
+                        <option value="" disabled selected>Seleccione S/N Sonda</option>
+                        <option value="1602A1890">1602A1890</option>
+                        <option value="1709A6840">1709A6840</option>
+                        <option value="2220A0870">2220A0870</option>
+                        <option value="2043A3156">2043A3156</option>
+                        <option value="2130A9756">2130A9756</option>
+                        <option value="2306A2954">2306A2954</option>
+                        <option value="1506A3114">1506A3114</option>
+                        <option value="1731A3106">1731A3106</option>
+                        <option value="2003A5724">2003A5724</option>
+                        <option value="2042A2970">2042A2970</option>
+                        <option value="1639A3320">1639A3320</option>
+                        <option value="2222A1410">2222A1410</option>
+                        <option value="1832A0514">1832A0514</option>
+                        <option value="2004A5804">2004A5804</option>
+                        <option value="Y00319820.10">Y00319820.10</option>
+                        <option value="Y60000716.03">Y60000716.03</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <!-- SECCIONES DE COMPONENTES (LPC, #3 Bearing, HPC, Combustion, SHIP LAP, HPT, LPT) -->
+            <!-- Estructura: fieldset > legend > .form-group > (p.radio-group-label + div.radio-group) + (label + textarea) -->
+
+            <fieldset>
+                <legend>Low Compressor Section</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">15. LPC STAGE 1</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="lpc_stage1_no_damage" name="lpc_stage1_status" value="No Damage Found"><label for="lpc_stage1_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="lpc_stage1_damage_in_limits" name="lpc_stage1_status" value="Damage In Limits"><label for="lpc_stage1_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="lpc_stage1_damage_out_limits" name="lpc_stage1_status" value="Damages Out of Limits"><label for="lpc_stage1_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="lpc_stage1_remarks" style="margin-top:15px;">16. LPC 1 Finding / Remarks</label>
+                    <textarea id="lpc_stage1_remarks" name="lpc_stage1_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">17. LPC STAGE 2</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="lpc_stage2_no_damage" name="lpc_stage2_status" value="No Damage Found"><label for="lpc_stage2_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="lpc_stage2_damage_in_limits" name="lpc_stage2_status" value="Damage In Limits"><label for="lpc_stage2_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="lpc_stage2_damage_out_limits" name="lpc_stage2_status" value="Damages Out of Limits"><label for="lpc_stage2_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="lpc_stage2_remarks" style="margin-top:15px;">18. LPC 2 Finding / Remarks</label>
+                    <textarea id="lpc_stage2_remarks" name="lpc_stage2_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">19. LPC STAGE 3</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="lpc_stage3_no_damage" name="lpc_stage3_status" value="No Damage Found"><label for="lpc_stage3_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="lpc_stage3_damage_in_limits" name="lpc_stage3_status" value="Damage In Limits"><label for="lpc_stage3_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="lpc_stage3_damage_out_limits" name="lpc_stage3_status" value="Damages Out of Limits"><label for="lpc_stage3_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="lpc_stage3_remarks" style="margin-top:15px;">20. LPC 3 Finding / Remarks</label>
+                    <textarea id="lpc_stage3_remarks" name="lpc_stage3_remarks" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend># 3 Bearing</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">21. # 3 BEARING FRONT SEAL</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="bearing3_front_no_damage" name="bearing3_front_status" value="No Damage Found"><label for="bearing3_front_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="bearing3_front_damage_in_limits" name="bearing3_front_status" value="Damage In Limits"><label for="bearing3_front_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="bearing3_front_damage_out_limits" name="bearing3_front_status" value="Damages Out of Limits"><label for="bearing3_front_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="bearing3_front_remarks" style="margin-top:15px;">22. # 3 Bearing front Seal Finding / Remarks</label>
+                    <textarea id="bearing3_front_remarks" name="bearing3_front_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">23. # 3 BEARING REAR SEAL</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="bearing3_rear_no_damage" name="bearing3_rear_status" value="No Damage Found"><label for="bearing3_rear_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="bearing3_rear_damage_in_limits" name="bearing3_rear_status" value="Damage In Limits"><label for="bearing3_rear_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="bearing3_rear_damage_out_limits" name="bearing3_rear_status" value="Damages Out of Limits"><label for="bearing3_rear_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="bearing3_rear_remarks" style="margin-top:15px;">24. # 3 Bearing rear Seal Finding / Remarks</label>
+                    <textarea id="bearing3_rear_remarks" name="bearing3_rear_remarks" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>High Compressor Section</legend>
+                <!-- Repetir .form-group para HPC STAGE 1 a 8 -->
+                <div class="form-group">
+                    <p class="radio-group-label">25. HPC STAGE 1</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpc_stage1_no_damage" name="hpc_stage1_status" value="No Damage Found"><label for="hpc_stage1_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpc_stage1_damage_in_limits" name="hpc_stage1_status" value="Damage In Limits"><label for="hpc_stage1_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpc_stage1_damage_out_limits" name="hpc_stage1_status" value="Damages Out of Limits"><label for="hpc_stage1_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpc_stage1_remarks" style="margin-top:15px;">26. HPC Stage 1 Finding / Remarks</label>
+                    <textarea id="hpc_stage1_remarks" name="hpc_stage1_remarks" rows="3"></textarea>
+                </div>
+                <!-- ... (HPC Stages 2-8) ... -->
+                 <div class="form-group">
+                    <p class="radio-group-label">27. HPC STAGE 2</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpc_stage2_no_damage" name="hpc_stage2_status" value="No Damage Found"><label for="hpc_stage2_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpc_stage2_damage_in_limits" name="hpc_stage2_status" value="Damage In Limits"><label for="hpc_stage2_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpc_stage2_damage_out_limits" name="hpc_stage2_status" value="Damages Out of Limits"><label for="hpc_stage2_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpc_stage2_remarks" style="margin-top:15px;">28. HPC Stage 2 Finding / Remarks</label>
+                    <textarea id="hpc_stage2_remarks" name="hpc_stage2_remarks" rows="3"></textarea>
+                </div>
+                 <div class="form-group">
+                    <p class="radio-group-label">29. HPC STAGE 3</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpc_stage3_no_damage" name="hpc_stage3_status" value="No Damage Found"><label for="hpc_stage3_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpc_stage3_damage_in_limits" name="hpc_stage3_status" value="Damage In Limits"><label for="hpc_stage3_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpc_stage3_damage_out_limits" name="hpc_stage3_status" value="Damages Out of Limits"><label for="hpc_stage3_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpc_stage3_remarks" style="margin-top:15px;">30. HPC Stage 3 Finding / Remarks</label>
+                    <textarea id="hpc_stage3_remarks" name="hpc_stage3_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">31. HPC STAGE 4</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpc_stage4_no_damage" name="hpc_stage4_status" value="No Damage Found"><label for="hpc_stage4_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpc_stage4_damage_in_limits" name="hpc_stage4_status" value="Damage In Limits"><label for="hpc_stage4_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpc_stage4_damage_out_limits" name="hpc_stage4_status" value="Damages Out of Limits"><label for="hpc_stage4_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpc_stage4_remarks" style="margin-top:15px;">32. HPC Stage 4 Finding / Remarks</label>
+                    <textarea id="hpc_stage4_remarks" name="hpc_stage4_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">33. HPC STAGE 5</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpc_stage5_no_damage" name="hpc_stage5_status" value="No Damage Found"><label for="hpc_stage5_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpc_stage5_damage_in_limits" name="hpc_stage5_status" value="Damage In Limits"><label for="hpc_stage5_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpc_stage5_damage_out_limits" name="hpc_stage5_status" value="Damages Out of Limits"><label for="hpc_stage5_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpc_stage5_remarks" style="margin-top:15px;">34. HPC Stage 5 Finding / Remarks</label>
+                    <textarea id="hpc_stage5_remarks" name="hpc_stage5_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">35. HPC STAGE 6</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpc_stage6_no_damage" name="hpc_stage6_status" value="No Damage Found"><label for="hpc_stage6_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpc_stage6_damage_in_limits" name="hpc_stage6_status" value="Damage In Limits"><label for="hpc_stage6_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpc_stage6_damage_out_limits" name="hpc_stage6_status" value="Damages Out of Limits"><label for="hpc_stage6_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpc_stage6_remarks" style="margin-top:15px;">36. HPC Stage 6 Finding / Remarks</label>
+                    <textarea id="hpc_stage6_remarks" name="hpc_stage6_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">37. HPC STAGE 7</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpc_stage7_no_damage" name="hpc_stage7_status" value="No Damage Found"><label for="hpc_stage7_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpc_stage7_damage_in_limits" name="hpc_stage7_status" value="Damage In Limits"><label for="hpc_stage7_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpc_stage7_damage_out_limits" name="hpc_stage7_status" value="Damages Out of Limits"><label for="hpc_stage7_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpc_stage7_remarks" style="margin-top:15px;">38. HPC Stage 7 Finding / Remarks</label>
+                    <textarea id="hpc_stage7_remarks" name="hpc_stage7_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">39. HPC STAGE 8</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpc_stage8_no_damage" name="hpc_stage8_status" value="No Damage Found"><label for="hpc_stage8_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpc_stage8_damage_in_limits" name="hpc_stage8_status" value="Damage In Limits"><label for="hpc_stage8_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpc_stage8_damage_out_limits" name="hpc_stage8_status" value="Damages Out of Limits"><label for="hpc_stage8_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpc_stage8_remarks" style="margin-top:15px;">40. HPC Stage 8 Finding / Remarks</label>
+                    <textarea id="hpc_stage8_remarks" name="hpc_stage8_remarks" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Combustion Chamber</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">41. IGNITER SEGMENT</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="igniter_no_damage" name="igniter_status" value="No Damage Found"><label for="igniter_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="igniter_damage_in_limits" name="igniter_status" value="Damage In Limits"><label for="igniter_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="igniter_damage_out_limits" name="igniter_status" value="Damages Out of Limits"><label for="igniter_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="igniter_remarks" style="margin-top:15px;">42. Igniter Segment Finding / Remarks</label>
+                    <textarea id="igniter_remarks" name="igniter_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">43. FUEL NOZZLE</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="fuelnozzle_no_damage" name="fuelnozzle_status" value="No Damage Found"><label for="fuelnozzle_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="fuelnozzle_damage_in_limits" name="fuelnozzle_status" value="Damage In Limits"><label for="fuelnozzle_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="fuelnozzle_damage_out_limits" name="fuelnozzle_status" value="Damages Out of Limits"><label for="fuelnozzle_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="fuelnozzle_remarks" style="margin-top:15px;">44. Fuel Nozzle Finding / Remarks</label>
+                    <textarea id="fuelnozzle_remarks" name="fuelnozzle_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">45. CCH INNER LINER</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="cch_inner_no_damage" name="cch_inner_status" value="No Damage Found"><label for="cch_inner_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="cch_inner_damage_in_limits" name="cch_inner_status" value="Damage In Limits"><label for="cch_inner_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="cch_inner_damage_out_limits" name="cch_inner_status" value="Damages Out of Limits"><label for="cch_inner_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="cch_inner_remarks" style="margin-top:15px;">46. CCH Inner Liner Finding / Remarks</label>
+                    <textarea id="cch_inner_remarks" name="cch_inner_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">47. CCH OUTER LINER</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="cch_outer_no_damage" name="cch_outer_status" value="No Damage Found"><label for="cch_outer_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="cch_outer_damage_in_limits" name="cch_outer_status" value="Damage In Limits"><label for="cch_outer_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="cch_outer_damage_out_limits" name="cch_outer_status" value="Damages Out of Limits"><label for="cch_outer_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="cch_outer_remarks" style="margin-top:15px;">48. CCH Outer Liner Finding / Remarks</label>
+                    <textarea id="cch_outer_remarks" name="cch_outer_remarks" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>SHIP LAP</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">49. SHIPLAP</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="shiplap_no_damage" name="shiplap_status" value="No Damage Found"><label for="shiplap_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="shiplap_damage_in_limits" name="shiplap_status" value="Damage In Limits"><label for="shiplap_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="shiplap_damage_out_limits" name="shiplap_status" value="Damages Out of Limits"><label for="shiplap_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="shiplap_remarks" style="margin-top:15px;">50. Shiplap Finding / Remarks</label>
+                    <textarea id="shiplap_remarks" name="shiplap_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="shiplap_dimensions">51. Ship Lap Dimensions</label>
+                    <input type="text" id="shiplap_dimensions" name="shiplap_dimensions">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>High Pressure Turbine</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">52. HPT VANE</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpt_vane_no_damage" name="hpt_vane_status" value="No Damage Found"><label for="hpt_vane_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpt_vane_damage_in_limits" name="hpt_vane_status" value="Damage In Limits"><label for="hpt_vane_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpt_vane_damage_out_limits" name="hpt_vane_status" value="Damages Out of Limits"><label for="hpt_vane_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpt_vane_remarks" style="margin-top:15px;">53. HPT VANE Finding / Remarks</label>
+                    <textarea id="hpt_vane_remarks" name="hpt_vane_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">54. HPT STAGE 1</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpt_s1_no_damage" name="hpt_s1_status" value="No Damage Found"><label for="hpt_s1_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpt_s1_damage_in_limits" name="hpt_s1_status" value="Damage In Limits"><label for="hpt_s1_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpt_s1_damage_out_limits" name="hpt_s1_status" value="Damages Out of Limits"><label for="hpt_s1_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpt_s1_remarks" style="margin-top:15px;">55. HPT Stage 1 Finding / Remarks</label>
+                    <textarea id="hpt_s1_remarks" name="hpt_s1_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">56. HPT STAGE 2</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="hpt_s2_no_damage" name="hpt_s2_status" value="No Damage Found"><label for="hpt_s2_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="hpt_s2_damage_in_limits" name="hpt_s2_status" value="Damage In Limits"><label for="hpt_s2_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="hpt_s2_damage_out_limits" name="hpt_s2_status" value="Damages Out of Limits"><label for="hpt_s2_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="hpt_s2_remarks" style="margin-top:15px;">57. HPT Stage 2 Finding / Remarks</label>
+                    <textarea id="hpt_s2_remarks" name="hpt_s2_remarks" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>LOW PRESSURE TURBINE</legend>
+                <div class="form-group">
+                    <p class="radio-group-label">58. LPT STAGE 1</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="lpt_s1_no_damage" name="lpt_s1_status" value="No Damage Found"><label for="lpt_s1_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="lpt_s1_damage_in_limits" name="lpt_s1_status" value="Damage In Limits"><label for="lpt_s1_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="lpt_s1_damage_out_limits" name="lpt_s1_status" value="Damages Out of Limits"><label for="lpt_s1_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="lpt_s1_remarks" style="margin-top:15px;">59. LPT Stage 1 Finding / Remarks</label>
+                    <textarea id="lpt_s1_remarks" name="lpt_s1_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">60. LPT STAGE 2</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="lpt_s2_no_damage" name="lpt_s2_status" value="No Damage Found"><label for="lpt_s2_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="lpt_s2_damage_in_limits" name="lpt_s2_status" value="Damage In Limits"><label for="lpt_s2_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="lpt_s2_damage_out_limits" name="lpt_s2_status" value="Damages Out of Limits"><label for="lpt_s2_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="lpt_s2_remarks" style="margin-top:15px;">61. LPT Stage 2 Finding / Remarks</label>
+                    <textarea id="lpt_s2_remarks" name="lpt_s2_remarks" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <p class="radio-group-label">62. LPT STAGE 3</p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="lpt_s3_no_damage" name="lpt_s3_status" value="No Damage Found"><label for="lpt_s3_no_damage">No Damage Found</label></div>
+                        <div><input type="radio" id="lpt_s3_damage_in_limits" name="lpt_s3_status" value="Damage In Limits"><label for="lpt_s3_damage_in_limits">Damage In Limits</label></div>
+                        <div><input type="radio" id="lpt_s3_damage_out_limits" name="lpt_s3_status" value="Damages Out of Limits"><label for="lpt_s3_damage_out_limits">Damages Out of Limits</label></div>
+                    </div>
+                    <label for="lpt_s3_remarks" style="margin-top:15px;">63. LPT Stage 3 Finding / Remarks</label>
+                    <textarea id="lpt_s3_remarks" name="lpt_s3_remarks" rows="3"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Final Disposition</legend>
+                <div class="form-note">64. Coloque disposiciones finales de manera resumida</div>
+                <div class="form-note">65. Defina el estado del motor luego de la inspección con las opciones dadas</div>
+                <div class="form-note">66. Indique el nuevo intervalo, el mas restrictivo, FC o FH, solo ponga uno, si no hay nuevos intervalos coloque el actual.</div>
+                <div class="form-note">67. Coloque su correo electrónico</div>
+                <div class="form-note">68. Coloque el tiempo invertido en minutos.</div>
+
+                <div class="form-group">
+                    <label for="final_disposition">64. Final disposition, Restrictions or New Restrictions <span class="asterisk">*</span></label>
+                    <textarea id="final_disposition" name="final_disposition" required rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <p class="radio-group-label">65. Engine Status after BSI <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="engine_status_serviceable" name="engine_status_bsi" value="Serviceable to Operation" required><label for="engine_status_serviceable">Serviceable to Operation</label></div>
+                        <div><input type="radio" id="engine_status_remove_30fc" name="engine_status_bsi" value="Remove before 30 FC"><label for="engine_status_remove_30fc">Remove before 30 FC</label></div>
+                        <div><input type="radio" id="engine_status_remove_10fc" name="engine_status_bsi" value="Remove before 10 FC"><label for="engine_status_remove_10fc">Remove before 10 FC</label></div>
+                        <div><input type="radio" id="engine_status_remove_5fc" name="engine_status_bsi" value="Remove before 5 FC"><label for="engine_status_remove_5fc">Remove before 5 FC</label></div>
+                        <div><input type="radio" id="engine_status_remove_next_flight" name="engine_status_bsi" value="Shall be Removed before next flight"><label for="engine_status_remove_next_flight">Shall be Removed before next flight</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="new_interval_inspections">66. New Interval Inspections (If Apply) <span class="asterisk">*</span></label>
+                    <input type="text" id="new_interval_inspections" name="new_interval_inspections" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="user_email">67. Put your email <span class="asterisk">*</span></label>
+                    <input type="email" id="user_email" name="user_email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="inspection_time">68. Inspection Time (Minutes) <span class="asterisk">*</span></label>
+                    <input type="number" id="inspection_time" name="inspection_time" min="1" required placeholder="Ej: 60">
+                    <p class="form-note" style="font-size: 0.8em; margin-top: 5px;">Escriba un número mayor que 0.</p>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Intervals (for Statistics)</legend>
+                <p class="form-note">In this section indicate if inspection was or not affected, if the answer is YES, put new interval, FH & FC. If interval was not affected put the actual intervals in FH & FC</p>
+
+                <div class="form-group">
+                    <p class="radio-group-label">69. Interval inspection Affected? <span class="asterisk">*</span></p>
+                    <div class="radio-group">
+                        <div><input type="radio" id="interval_affected_yes" name="interval_affected" value="Yes" required><label for="interval_affected_yes">Yes</label></div>
+                        <div><input type="radio" id="interval_affected_no" name="interval_affected" value="No"><label for="interval_affected_no">No</label></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="interval_next_fc">70. Interval for next Inspection (FC)</label>
+                    <input type="text" id="interval_next_fc" name="interval_next_fc">
+                </div>
+
+                <div class="form-group">
+                    <label for="interval_next_fh">71. Interval for next Inspection (FH)</label>
+                    <input type="text" id="interval_next_fh" name="interval_next_fh">
+                </div>
+            </fieldset>
+
+            <button type="submit">Submit Report</button>
+        </form>
+    </div>
+
+</body>
+</html>
