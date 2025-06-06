@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boroscope Inspection Report - Page 5 (Images)</title>
+    <link rel="stylesheet" href="../css/forms-common.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top */
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Color de fondo suave */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%; /* Ajusta el tamaño según sea necesario */
+            max-width: 500px;
+            opacity: 0.1; /* Semi-transparente */
+            z-index: 1; /* Sobre la página */
+            pointer-events: none;
+        }
+
+        .container {
+            background-color: white;
+            width: 21cm; /* Tamaño de una hoja A4 en cm */
+            height: 29.7cm; /* Tamaño de una hoja A4 en cm */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2cm; /* Márgenes internos simulados */
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 10pt;
+            color: #333;
+        }
+
+        /* Header Styles - Replicated from previous pages */
+        .header-section {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1cm;
+        }
+
+        .header-title {
+            font-size: 10pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .header-logo {
+            width: 80px;
+            height: auto;
+        }
+
+        /* Table Styles - Replicated from previous pages */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1cm;
+            font-size: 9pt;
+        }
+
+        .info-table th,
+        .info-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .info-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            width: 25%;
+        }
+
+        .info-table td {
+            width: 25%;
+        }
+
+        .info-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .placeholder {
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Support Images Section */
+        .support-images-section {
+            width: 100%;
+            text-align: left;
+            margin-top: 1cm;
+            margin-bottom: 1cm;
+        }
+
+        .support-images-title {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .image-item {
+            display: flex;
+            align-items: flex-start; /* Alinea la imagen y el texto al principio */
+            margin-bottom: 15px;
+        }
+
+        .image-thumbnail {
+            width: 150px; /* Tamaño fijo para la imagen */
+            height: 100px;
+            border: 1px solid #ddd;
+            margin-right: 15px;
+            object-fit: contain; /* Asegura que la imagen se ajuste sin distorsionarse */
+        }
+
+        .image-description {
+            flex-grow: 1;
+            font-size: 10pt;
+            line-height: 1.4;
+            word-break: break-word; /* Romper palabras largas si es necesario */
+            padding-top: 5px; /* Pequeño ajuste para alinear con la imagen */
+        }
+
+        /* Footer Styles - Replicated from previous pages, with page number adjustment */
+        .footer-section {
+            position: absolute;
+            bottom: 2cm;
+            width: calc(100% - 4cm);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 8pt;
+            color: #555;
+        }
+
+        .footer-left p:first-child {
+            font-weight: bold;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div style="width: 80px;"></div> <!-- Espaciador para alinear el título -->
+            <div class="header-title">
+                <p>QUALITY CONTROL DEPARTMENT</p>
+                <p>BOROSCOPE INSPECTION REPORT</p>
+            </div>
+            <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo" class="header-logo">
+        </div>
+
+        <!-- General Information Table (Replicated for consistency) -->
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th>Work Order Number</th>
+                    <th>A/C Registration</th>
+                    <th>Engine S/N</th>
+                    <th>Inspected By</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="placeholder">[Work Order Number]</span></td>
+                    <td><span class="placeholder">[Aircraft Registration]</span></td>
+                    <td><span class="placeholder">[Engine S/N]</span></td>
+                    <td><span class="placeholder">[Inspected By]</span></td>
+                </tr>
+                <tr>
+                    <th>Internal ID</th>
+                    <th>A/C Model</th>
+                    <th>Station</th>
+                    <th>Inspection Date</th>
+                </tr>
+                <tr>
+                    <td><span class="placeholder">[Internal ID]</span></td>
+                    <td><span class="placeholder">[Aircraft Model]</span></td>
+                    <td><span class="placeholder">[Station]</span></td>
+                    <td><span class="placeholder">[Date of BSI]</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- References Used (Replicated for consistency) -->
+        <table class="info-table" style="margin-bottom: 1cm;">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">References Used</th>
+                    <td colspan="3"><span class="placeholder">[References Used]</span></td>
+                </tr>
+            </thead>
+        </table>
+
+        <!-- SUPPORT IMAGES Section -->
+        <div class="support-images-section">
+            <p class="support-images-title">SUPPORT IMAGES</p>
+            
+            <!-- Placeholder para imágenes dinámicas -->
+            <div id="dynamic-images-container">
+                <!-- Ejemplo de cómo se vería una imagen y su descripción -->
+                <div class="image-item">
+                    <img src="https://via.placeholder.com/150x100?text=Imagen+1" alt="Imagen 1" class="image-thumbnail">
+                    <p class="image-description"><span class="placeholder">[Descripción de Imagen 1]</span></p>
+                </div>
+                <div class="image-item">
+                    <img src="https://via.placeholder.com/150x100?text=Imagen+2" alt="Imagen 2" class="image-thumbnail">
+                    <p class="image-description"><span class="placeholder">[Descripción de Imagen 2]</span></p>
+                </div>
+                <!-- ... se agregarían más elementos de imagen/descripción aquí dinámicamente -->
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer-section">
+            <div class="footer-left">
+                <p>F-QC-018 REV 3 (05-OCT-2021)</p>
+                <p>Page 5 of 5</p>
+            </div>
+            <div class="footer-right">
+                <p>Aeroenlaces Nacionales S.A de C.V</p>
+                <p>DGAC 348</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

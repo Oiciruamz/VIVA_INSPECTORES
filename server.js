@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs-extra');
 const multer = require('multer');
+const libre = require('libreoffice-convert');
+const { promisify } = require('util');
 
 // Importar los generadores de documentos
 const BSI_PW1100_Generator = require('./js/generators/BSI_PW1100_Generator');
@@ -46,6 +48,8 @@ const upload = multer({
         fileSize: 10 * 1024 * 1024 // 10MB máximo
     }
 });
+
+const convertAsync = promisify(libre.convert);
 
 // Rutas principales
 app.get('/', (req, res) => {
@@ -94,6 +98,50 @@ app.post('/generate-bsi-pw1100', upload.array('images', 10), async (req, res) =>
         console.error('Error generando documento:', error);
         res.status(500).json({ 
             error: 'Error generando el documento', 
+            details: error.message 
+        });
+    }
+});
+
+// Nueva ruta para previsualizar documento BSI PW1100 como PDF
+app.post('/preview-bsi-pw1100', upload.array('images', 10), async (req, res) => {
+    try {
+        console.log('Datos de previsualización recibidos:', req.body);
+        console.log('Imágenes de previsualización recibidas:', req.files?.length || 0);
+
+        const imagesWithDescriptions = req.files ? req.files.map((file, index) => {
+            const descriptionKey = `image_description_${index}`;
+            return {
+                ...file,
+                description: req.body[descriptionKey] || `Imagen ${index + 1}`
+            };
+        }) : [];
+
+        const generator = new BSI_PW1100_Generator();
+        const documentBuffer = await generator.generateDocument(req.body, imagesWithDescriptions);
+
+        // Convertir el buffer del documento Word a PDF
+        const pdfBuffer = await convertAsync(documentBuffer, '.pdf', undefined);
+
+        // Configurar headers para previsualización (mostrar en el navegador)
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'inline; filename="BSI_PW1100_Preview.pdf"'); // 'inline' para mostrar en el navegador
+        
+        res.send(pdfBuffer);
+
+        // Limpiar archivos temporales
+        setTimeout(() => {
+            if (req.files) {
+                req.files.forEach(file => {
+                    fs.remove(file.path).catch(console.error);
+                });
+            }
+        }, 5000);
+
+    } catch (error) {
+        console.error('Error generando previsualización de documento:', error);
+        res.status(500).json({ 
+            error: 'Error generando la previsualización del documento', 
             details: error.message 
         });
     }

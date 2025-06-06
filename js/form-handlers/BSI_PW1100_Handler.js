@@ -2,6 +2,21 @@ class BSI_PW1100_Handler {
     constructor() {
         this.form = null;
         this.imageFiles = [];
+        this.previewPages = [];
+        this.currentPageIndex = 0;
+        this.pagePaths = [
+            '../forms/cover_sheet_preview.html',
+            '../forms/boroscope_report_page2_preview.html',
+            '../forms/boroscope_report_page3_preview.html',
+            '../forms/boroscope_report_page4_preview.html',
+            '../forms/boroscope_report_page5_images_preview.html'
+        ];
+        this.modal = null;
+        this.closeButton = null;
+        this.prevPageBtn = null;
+        this.nextPageBtn = null;
+        this.pageNumberDisplay = null;
+        this.previewPagesContainer = null;
         this.init();
     }
 
@@ -12,6 +27,7 @@ class BSI_PW1100_Handler {
         } else {
             this.setupForm();
         }
+        this.loadFormData(); // Cargar datos del formulario al inicio
     }
 
     setupForm() {
@@ -20,6 +36,14 @@ class BSI_PW1100_Handler {
             console.error('No se encontró el formulario');
             return;
         }
+
+        // Initialize modal elements
+        this.modal = document.getElementById('previewModal');
+        this.closeButton = document.querySelector('#previewModal .close-button');
+        this.prevPageBtn = document.getElementById('prevPageBtn');
+        this.nextPageBtn = document.getElementById('nextPageBtn');
+        this.pageNumberDisplay = document.getElementById('pageNumberDisplay');
+        this.previewPagesContainer = document.getElementById('previewPagesContainer');
 
         // Agregar contenedor de botones de acción
         this.addActionButtonsContainer();
@@ -44,23 +68,28 @@ class BSI_PW1100_Handler {
             </div>
         `;
 
-        // Insertar antes de los botones de acción
-        const actionButtonsContainer = this.form.querySelector('.action-buttons-container');
-        if (actionButtonsContainer) {
-            this.form.insertBefore(imageSection, actionButtonsContainer);
+        // Insertar antes del contenedor de botones de acción existente
+        const buttonGroup = this.form.querySelector('.button-group');
+        if (buttonGroup) {
+            this.form.insertBefore(imageSection, buttonGroup);
         } else {
-            // Si no existe el contenedor de botones, insertar antes del botón submit
+            // Si no se encuentra el contenedor de botones, como fallback, intentar antes del botón submit
             const submitButton = this.form.querySelector('button[type="submit"]');
-            this.form.insertBefore(imageSection, submitButton);
+            if (submitButton) {
+                this.form.insertBefore(imageSection, submitButton);
+            } else {
+                // Si no hay botón submit, simplemente añadir al final del formulario
+                this.form.appendChild(imageSection);
+            }
         }
     }
 
     addActionButtonsContainer() {
-        const submitButton = this.form.querySelector('button[type="submit"]');
-        
-        // Crear contenedor para todos los botones de acción
-        const actionContainer = document.createElement('div');
-        actionContainer.className = 'action-buttons-container';
+        const buttonGroup = this.form.querySelector('.button-group');
+        if (!buttonGroup) {
+            console.error('No se encontró el contenedor .button-group en el formulario.');
+            return; // Salir si no se encuentra el contenedor
+        }
         
         // Crear botón para limpiar formulario
         const clearButton = document.createElement('button');
@@ -74,25 +103,29 @@ class BSI_PW1100_Handler {
         debugButton.className = 'action-button warning debug-fill-btn';
         debugButton.innerHTML = '🐛 Llenar Formulario (Debug)';
         
-        // Crear botón para generar Word
+        // Crear botón para generar Word (el de previsualización ya está en el HTML)
         const wordButton = document.createElement('button');
         wordButton.type = 'button';
         wordButton.className = 'action-button primary generate-word-btn';
         wordButton.innerHTML = '📄 Generar Documento Word';
         
-        // Agregar botones al contenedor
-        actionContainer.appendChild(clearButton);
-        actionContainer.appendChild(debugButton);
-        actionContainer.appendChild(wordButton);
-        
-        // Insertar antes del botón submit
-        submitButton.parentNode.insertBefore(actionContainer, submitButton);
-        
-        // Ocultar el botón submit original o moverlo al contenedor
-        submitButton.style.display = 'none';
+        // Agregar botones al contenedor button-group existente
+        // Insertar antes del botón submit existente si es posible
+        const submitButton = buttonGroup.querySelector('button[type="submit"]');
+        if (submitButton) {
+            buttonGroup.insertBefore(clearButton, submitButton);
+            buttonGroup.insertBefore(debugButton, submitButton);
+            buttonGroup.insertBefore(wordButton, submitButton);
+        } else {
+            // Si no hay botón submit, simplemente añadir al final
+            buttonGroup.appendChild(clearButton);
+            buttonGroup.appendChild(debugButton);
+            buttonGroup.appendChild(wordButton);
+        }
+
+        // El botón original de submit y el de previsualización ya están en el HTML
+        // No ocultamos nada, solo añadimos los nuevos.
     }
-
-
 
     setupEventListeners() {
         // Evento para subir imágenes
@@ -101,7 +134,13 @@ class BSI_PW1100_Handler {
             imageInput.addEventListener('change', (e) => this.handleImageUpload(e));
         }
 
-        // Evento para generar documento Word
+        // Evento para previsualizar documento Word (ahora HTML) - apunta al botón existente en HTML
+        const previewButton = document.getElementById('previewDocBtn');
+        if (previewButton) {
+            previewButton.addEventListener('click', () => this.openPreviewModal());
+        }
+
+        // Evento para generar documento Word - apunta al nuevo botón creado en JS
         const wordButton = document.querySelector('.generate-word-btn');
         if (wordButton) {
             wordButton.addEventListener('click', () => this.generateWordDocument());
@@ -124,6 +163,27 @@ class BSI_PW1100_Handler {
             // Permitir envío normal del formulario para otras funcionalidades
             console.log('Formulario enviado normalmente');
         });
+
+        // Manejo del modal de previsualización (nueva lógica para HTML)
+        if (this.closeButton) {
+            this.closeButton.addEventListener('click', () => {
+                this.modal.style.display = 'none';
+            });
+        }
+
+        window.addEventListener('click', (event) => {
+            if (event.target === this.modal) {
+                this.modal.style.display = 'none';
+            }
+        });
+
+        // Eventos de navegación del modal
+        if (this.prevPageBtn) {
+            this.prevPageBtn.addEventListener('click', () => this.navigatePreview(-1));
+        }
+        if (this.nextPageBtn) {
+            this.nextPageBtn.addEventListener('click', () => this.navigatePreview(1));
+        }
     }
 
     handleImageUpload(event) {
@@ -199,6 +259,190 @@ class BSI_PW1100_Handler {
         });
     }
 
+    async openPreviewModal() {
+        this.showLoadingIndicator('Cargando previsualización...');
+
+        const formData = this.collectFormData();
+        this.saveFormData(formData); // Guardar datos del formulario antes de previsualizar
+
+        const validation = this.validateRequiredFields(formData);
+        if (!validation.isValid) {
+            this.hideLoadingIndicator();
+            alert(`Por favor complete los siguientes campos requeridos para la previsualización:\n${validation.missingFields.join('\n')}`);
+            return;
+        }
+
+        // Cargar las páginas HTML si aún no se han cargado
+        if (this.previewPages.length === 0) {
+            await this.loadPreviewPages();
+        }
+        
+        // Inyectar datos en todas las páginas cargadas
+        this.previewPages.forEach(pageElement => {
+            this.injectFormDataIntoPreview(pageElement, formData);
+        });
+
+        // Mostrar el modal y la primera página
+        this.modal.style.display = 'flex'; // Usar flex para centrar
+        this.currentPageIndex = 0;
+        this.showPage(this.currentPageIndex);
+        this.updatePageNavigation();
+
+        this.hideLoadingIndicator();
+    }
+
+    async loadPreviewPages() {
+        this.previewPagesContainer.innerHTML = ''; // Limpiar contenedor
+        this.previewPages = [];
+
+        for (const path of this.pagePaths) {
+            try {
+                const response = await fetch(path);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const htmlContent = await response.text();
+                
+                const pageWrapper = document.createElement('div');
+                pageWrapper.className = 'preview-page';
+                pageWrapper.innerHTML = htmlContent; // Cargar el contenido HTML
+                this.previewPagesContainer.appendChild(pageWrapper);
+                this.previewPages.push(pageWrapper);
+
+            } catch (error) {
+                console.error(`Error al cargar la página de previsualización ${path}:`, error);
+                // Opcional: mostrar un mensaje de error al usuario
+            }
+        }
+    }
+
+    showPage(index) {
+        this.previewPages.forEach((page, i) => {
+            page.style.display = (i === index) ? 'block' : 'none';
+        });
+    }
+
+    navigatePreview(direction) {
+        this.currentPageIndex += direction;
+
+        if (this.currentPageIndex < 0) {
+            this.currentPageIndex = 0; // Prevent going below first page
+        } else if (this.currentPageIndex >= this.previewPages.length) {
+            this.currentPageIndex = this.previewPages.length - 1; // Prevent going beyond last page
+        }
+
+        this.showPage(this.currentPageIndex);
+        this.updatePageNavigation();
+    }
+
+    updatePageNavigation() {
+        this.pageNumberDisplay.textContent = `Página ${this.currentPageIndex + 1} de ${this.previewPages.length}`;
+        this.prevPageBtn.disabled = this.currentPageIndex === 0;
+        this.nextPageBtn.disabled = this.currentPageIndex === this.previewPages.length - 1;
+    }
+
+    injectFormDataIntoPreview(pageElement, formData) {
+        const mappings = {
+            'nombre_registrado': '#preview-nombre_registrado',
+            'work_order_number': '#preview-work_order_number',
+            'date_of_bsi': '#preview-date_of_bsi',
+            'inspected_by': '#preview-inspected_by',
+            'inspector_stamp': '#preview-inspector_stamp',
+            'references_used': '#preview-references_used',
+            'aircraft_registration': '#preview-aircraft_registration',
+            'engine_sn': '#preview-engine_sn',
+            'boroscope_sn': '#preview-boroscope_sn',
+            'probe_sn': '#preview-probe_sn',
+            'shiplap_dimensions': '#preview-shiplap_dimensions',
+            'final_disposition': '#preview-final_disposition',
+            'new_interval_inspections': '#preview-new_interval_inspections',
+            'user_email': '#preview-user_email',
+            'inspection_time': '#preview-inspection_time',
+            'interval_next_fc': '#preview-interval_next_fc',
+            'interval_next_fh': '#preview-interval_next_fh',
+            'lpc_stage1_remarks': '#preview-lpc_stage1_remarks',
+            'lpc_stage2_remarks': '#preview-lpc_stage2_remarks',
+            'lpc_stage3_remarks': '#preview-lpc_stage3_remarks',
+            'bearing3_front_remarks': '#preview-bearing3_front_remarks',
+            'bearing3_rear_remarks': '#preview-bearing3_rear_remarks',
+            'hpc_stage1_remarks': '#preview-hpc_stage1_remarks',
+            'hpc_stage2_remarks': '#preview-hpc_stage2_remarks',
+            'hpc_stage3_remarks': '#preview-hpc_stage3_remarks',
+            'hpc_stage4_remarks': '#preview-hpc_stage4_remarks',
+            'hpc_stage5_remarks': '#preview-hpc_stage5_remarks',
+            'hpc_stage6_remarks': '#preview-hpc_stage6_remarks',
+            'hpc_stage7_remarks': '#preview-hpc_stage7_remarks',
+            'hpc_stage8_remarks': '#preview-hpc_stage8_remarks',
+            'igniter_remarks': '#preview-igniter_remarks',
+            'fuelnozzle_remarks': '#preview-fuelnozzle_remarks',
+            'cch_inner_remarks': '#preview-cch_inner_remarks',
+            'cch_outer_remarks': '#preview-cch_outer_remarks',
+            'shiplap_remarks': '#preview-shiplap_remarks',
+            'hpt_vane_remarks': '#preview-hpt_vane_remarks',
+            'hpt_s1_remarks': '#preview-hpt_s1_remarks',
+            'hpt_s2_remarks': '#preview-hpt_s2_remarks',
+            'lpt_s1_remarks': '#preview-lpt_s1_remarks',
+            'lpt_s2_remarks': '#preview-lpt_s2_remarks',
+            'lpt_s3_remarks': '#preview-lpt_s3_remarks'
+        };
+
+        for (const key in formData) {
+            if (mappings[key]) {
+                const targetElement = pageElement.querySelector(mappings[key]);
+                if (targetElement) {
+                    targetElement.textContent = formData[key];
+                }
+            }
+        }
+
+        // Manejo especial para imágenes: inyectar descripciones y src
+        if (formData.image_files_data && Array.isArray(formData.image_files_data)) {
+            formData.image_files_data.forEach((imgData, index) => {
+                const descElement = pageElement.querySelector(`#preview-image-description-${index}`);
+                if (descElement) {
+                    descElement.textContent = imgData.description || '';
+                }
+                const imgElement = pageElement.querySelector(`#preview-image-${index}`);
+                if (imgElement && imgData.src) {
+                    imgElement.src = imgData.src;
+                    imgElement.style.display = 'block'; // Asegurarse de que la imagen se muestre
+                }
+            });
+        }
+
+        // Aquí puedes añadir lógica para campos complejos, como radio buttons o checkboxes
+        // Por ejemplo, para radio buttons, podrías buscar un elemento con un ID específico
+        // que corresponda al valor seleccionado y añadirle una clase o contenido.
+
+        // Limpiar todos los checkmarks antes de aplicar los nuevos
+        pageElement.querySelectorAll('.radio-check').forEach(el => el.textContent = '');
+
+        // Lógica para radio buttons (añadir checkmark a la opción seleccionada)
+        const radioGroups = [
+            'station', 'bsi_reason', 'bsi_type', 'aircraft_model', 'boroscope_type',
+            'lpc_stage1_status', 'lpc_stage2_status', 'lpc_stage3_status',
+            'bearing3_front_status', 'bearing3_rear_status',
+            'hpc_stage1_status', 'hpc_stage2_status', 'hpc_stage3_status', 'hpc_stage4_status',
+            'hpc_stage5_status', 'hpc_stage6_status', 'hpc_stage7_status', 'hpc_stage8_status',
+            'igniter_status', 'fuelnozzle_status', 'cch_inner_status', 'cch_outer_status',
+            'shiplap_status', 'hpt_vane_status', 'hpt_s1_status', 'hpt_s2_status',
+            'lpt_s1_status', 'lpt_s2_status', 'lpt_s3_status',
+            'engine_status_bsi', 'interval_affected'
+        ];
+
+        radioGroups.forEach(groupName => {
+            if (formData[groupName]) {
+                const value = formData[groupName];
+                const normalizedValue = value.replace(/ /g, '_').replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();
+                const targetId = `#preview-${groupName}-${normalizedValue}`;
+                const targetElement = pageElement.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.textContent = '✔️';
+                }
+            }
+        });
+    }
+
     async generateWordDocument() {
         try {
             // Mostrar indicador de carga
@@ -266,15 +510,43 @@ class BSI_PW1100_Handler {
     }
 
     collectFormData() {
-        const formData = new FormData(this.form);
         const data = {};
+        const formElements = this.form.elements;
 
-        for (let [key, value] of formData.entries()) {
-            // Evitar duplicar las imágenes que ya se manejan por separado
-            if (key !== 'images' && key !== 'inspection_images') {
-                data[key] = value;
+        for (let i = 0; i < formElements.length; i++) {
+            const element = formElements[i];
+            if (element.name) {
+                if (element.type === 'radio') {
+                    if (element.checked) {
+                        data[element.name] = element.value;
+                    }
+                } else if (element.type === 'checkbox') {
+                    // Si hay checkboxes, su valor se manejaría aquí
+                    data[element.name] = element.checked;
+                } else if (element.tagName === 'SELECT') {
+                    data[element.name] = element.value;
+                } else if (element.type !== 'file') { // Excluir inputs de tipo file (imágenes se manejan aparte)
+                    data[element.name] = element.value.trim();
+                }
             }
         }
+
+        // Recopilar datos de las imágenes adjuntas (descripciones y src)
+        data.image_files_data = [];
+        this.imageFiles.forEach((file, index) => {
+            const descriptionField = document.getElementById(`image_description_${index}`);
+            const description = descriptionField ? descriptionField.value.trim() : '';
+            
+            // Asegurarse de que el src de la imagen esté disponible (asumimos que ya se cargó en showImagePreview)
+            const imgElement = document.querySelector(`#image-preview .image-preview-item[data-index="${index}"] img`);
+            const imgSrc = imgElement ? imgElement.src : '';
+
+            data.image_files_data.push({
+                name: file.name,
+                description: description,
+                src: imgSrc // Guardar el Data URL de la imagen para la previsualización
+            });
+        });
 
         return data;
     }
@@ -317,19 +589,31 @@ class BSI_PW1100_Handler {
         };
     }
 
-    showLoadingIndicator() {
-        const button = document.querySelector('.generate-word-btn');
-        if (button) {
-            button.disabled = true;
-            button.innerHTML = '⏳ Generando documento...';
+    showLoadingIndicator(message = 'Cargando...') {
+        const wordButton = document.querySelector('.generate-word-btn');
+        const previewButton = document.querySelector('.preview-word-btn');
+        
+        if (wordButton) {
+            wordButton.disabled = true;
+            wordButton.innerHTML = `⏳ ${message}`;
+        }
+        if (previewButton) {
+            previewButton.disabled = true;
+            previewButton.innerHTML = `⏳ ${message}`;
         }
     }
 
     hideLoadingIndicator() {
-        const button = document.querySelector('.generate-word-btn');
-        if (button) {
-            button.disabled = false;
-            button.innerHTML = '📄 Generar Documento Word';
+        const wordButton = document.querySelector('.generate-word-btn');
+        const previewButton = document.querySelector('.preview-word-btn');
+
+        if (wordButton) {
+            wordButton.disabled = false;
+            wordButton.innerHTML = '📄 Generar Documento Word';
+        }
+        if (previewButton) {
+            previewButton.disabled = false;
+            previewButton.innerHTML = '👁️ Previsualizar Documento';
         }
     }
 
@@ -602,6 +886,61 @@ class BSI_PW1100_Handler {
             }
             
             console.log('Todas las imágenes eliminadas');
+        }
+    }
+
+    // Métodos para guardar y cargar datos del formulario en localStorage
+    saveFormData(data) {
+        try {
+            localStorage.setItem('bsiFormData', JSON.stringify(data));
+            console.log('Datos del formulario guardados en localStorage.');
+        } catch (e) {
+            console.error('Error al guardar datos en localStorage:', e);
+        }
+    }
+
+    loadFormData() {
+        try {
+            const data = localStorage.getItem('bsiFormData');
+            if (data) {
+                const formData = JSON.parse(data);
+                // Iterar sobre los datos y rellenar el formulario
+                for (const key in formData) {
+                    const input = this.form.elements[key];
+                    if (input) {
+                        if (input.type === 'radio') {
+                            const radio = this.form.querySelector(`input[name="${key}"][value="${formData[key]}"]`);
+                            if (radio) radio.checked = true;
+                        } else if (input.type === 'checkbox') {
+                            // Manejar checkboxes si los hubiera
+                            input.checked = formData[key];
+                        } else {
+                            input.value = formData[key];
+                        }
+                    }
+                }
+                // Manejar la carga de imágenes y sus descripciones
+                if (formData.image_files_data && Array.isArray(formData.image_files_data)) {
+                    this.imageFiles = formData.image_files_data.map(imgData => {
+                        // Recrear un objeto File dummy o usar Data URL directamente
+                        // Para una previsualización real, necesitarías recargar las imágenes del servidor
+                        // o guardarlas como Data URLs (cuidado con el tamaño de localStorage)
+                        // Por ahora, simplemente cargaremos las descripciones asociadas
+                        return { name: imgData.name, description: imgData.description, src: imgData.src };
+                    });
+                    this.showImagePreview(this.imageFiles);
+                    // Rellenar descripciones de imágenes después de que se muestren
+                    this.imageFiles.forEach((imgData, index) => {
+                        const textarea = document.getElementById(`image_description_${index}`);
+                        if (textarea) {
+                            textarea.value = imgData.description || '';
+                        }
+                    });
+                }
+                console.log('Datos del formulario cargados desde localStorage.');
+            }
+        } catch (e) {
+            console.error('Error al cargar datos desde localStorage:', e);
         }
     }
 }

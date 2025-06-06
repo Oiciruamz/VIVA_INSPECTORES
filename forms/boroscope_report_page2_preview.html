@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boroscope Inspection Report - Page 2</title>
+    <link rel="stylesheet" href="../css/forms-common.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top */
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Color de fondo suave */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%; /* Ajusta el tamaño según sea necesario */
+            max-width: 500px;
+            opacity: 0.1; /* Semi-transparente */
+            z-index: 1; /* Sobre la página */
+            pointer-events: none;
+        }
+
+        .container {
+            background-color: white;
+            width: 21cm; /* Tamaño de una hoja A4 en cm */
+            height: 29.7cm; /* Tamaño de una hoja A4 en cm */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2cm; /* Márgenes internos simulados */
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 10pt;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header-section {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1cm;
+        }
+
+        .header-title {
+            font-size: 10pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            flex-grow: 1; /* Ocupa el espacio central */
+        }
+
+        .header-logo {
+            width: 80px; /* Tamaño del logo superior derecho */
+            height: auto;
+        }
+
+        /* Table Styles */
+        .info-table,
+        .inspection-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1cm;
+            font-size: 9pt;
+        }
+
+        .info-table th,
+        .info-table td,
+        .inspection-table th,
+        .inspection-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .info-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            width: 25%; /* Ajusta el ancho de las columnas */
+        }
+
+        .info-table td {
+            width: 25%; /* Ajusta el ancho de las columnas */
+        }
+
+        .info-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .inspection-table th {
+            background-color: #e0e0e0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .inspection-table td {
+            text-align: center;
+        }
+
+        .inspection-table tr:not(:first-child) td:first-child {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .placeholder {
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Footer Styles */
+        .footer-section {
+            position: absolute;
+            bottom: 2cm;
+            width: calc(100% - 4cm);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            font-size: 8pt;
+            color: #555;
+        }
+
+        .footer-left p:first-child {
+            font-weight: bold;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div style="width: 80px;"></div> <!-- Espaciador para alinear el título -->
+            <div class="header-title">
+                <p>QUALITY CONTROL DEPARTMENT</p>
+                <p>BOROSCOPE INSPECTION REPORT</p>
+            </div>
+            <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo" class="header-logo">
+        </div>
+
+        <!-- General Information Table -->
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th>Work Order Number</th>
+                    <th>A/C Registration</th>
+                    <th>Engine S/N</th>
+                    <th>Inspected By</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="placeholder">[Work Order Number]</span></td>
+                    <td><span class="placeholder">[Aircraft Registration]</span></td>
+                    <td><span class="placeholder">[Engine S/N]</span></td>
+                    <td><span class="placeholder">[Inspected By]</span></td>
+                </tr>
+                <tr>
+                    <th>Internal ID</th>
+                    <th>A/C Model</th>
+                    <th>Station</th>
+                    <th>Inspection Date</th>
+                </tr>
+                <tr>
+                    <td><span class="placeholder">[Internal ID]</span></td>
+                    <td><span class="placeholder">[Aircraft Model]</span></td>
+                    <td><span class="placeholder">[Station]</span></td>
+                    <td><span class="placeholder">[Date of BSI]</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- References Used -->
+        <table class="info-table" style="margin-bottom: 2cm;">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">References Used</th>
+                    <td colspan="3"><span class="placeholder">[References Used]</span></td>
+                </tr>
+            </thead>
+        </table>
+
+        <!-- Section Inspected Table -->
+        <table class="inspection-table">
+            <thead>
+                <tr>
+                    <th>Section Inspected</th>
+                    <th>Status</th>
+                    <th>Findings / Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>LPC STAGE 1</td>
+                    <td><span class="placeholder">[LPC STAGE 1]</span></td>
+                    <td><span class="placeholder">[LPC Stage 1 Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td>LPC STAGE 2</td>
+                    <td><span class="placeholder">[LPC STAGE 2]</span></td>
+                    <td><span class="placeholder">[LPC Stage 2 Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td>LPC STAGE 3</td>
+                    <td><span class="placeholder">[LPC STAGE 3]</span></td>
+                    <td><span class="placeholder">[LPC Stage 3 Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td># 3 BEARING FRONT SEAL</td>
+                    <td><span class="placeholder">[# 3 BEARING FRONT SEAL]</span></td>
+                    <td><span class="placeholder">[# 3 Bearing front Seal Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td># 3 BEARING REAR SEAL</td>
+                    <td><span class="placeholder">[# 3 BEARING REAR SEAL]</span></td>
+                    <td><span class="placeholder">[# 3 Bearing rear Seal Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td>HPC STAGE 1</td>
+                    <td><span class="placeholder">[HPC STAGE 1]</span></td>
+                    <td><span class="placeholder">[HPC Stage 1 Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td>HPC STAGE 2</td>
+                    <td><span class="placeholder">[HPC STAGE 2]</span></td>
+                    <td><span class="placeholder">[HPC Stage 2 Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td>HPC STAGE 3</td>
+                    <td><span class="placeholder">[HPC STAGE 3]</span></td>
+                    <td><span class="placeholder">[HPC Stage 3 Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td>HPC STAGE 4</td>
+                    <td><span class="placeholder">[HPC STAGE 4]</span></td>
+                    <td><span class="placeholder">[HPC Stage 4 Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td>HPC STAGE 5</td>
+                    <td><span class="placeholder">[HPC STAGE 5]</span></td>
+                    <td><span class="placeholder">[HPC Stage 5 Finding / Remarks]</span></td>
+                </tr>
+                <tr>
+                    <td>HPC STAGE 6</td>
+                    <td><span class="placeholder">[HPC STAGE 6]</span></td>
+                    <td><span class="placeholder">[HPC Stage 6 Finding / Remarks]</span></td>
+                </tr>
+                <!-- ... more rows for other stages as needed, up to HPC Stage 8, then HPT, LPT, IGNITER, FUEL NOZZLE, CCH, SHIP LAP, BEARING -->
+            </tbody>
+        </table>
+
+        <!-- Footer Section -->
+        <div class="footer-section">
+            <div class="footer-left">
+                <p>F-QC-018 REV 3 (05-OCT-2021)</p>
+                <p>Page 2 of 5</p>
+            </div>
+            <div class="footer-right">
+                <p>Aeroenlaces Nacionales S.A de C.V</p>
+                <p>DGAC 348</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

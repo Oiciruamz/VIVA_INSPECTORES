@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Sheet Preview</title>
+    <link rel="stylesheet" href="../css/forms-common.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top */
+            min-height: 100vh;
+            background-color: #f0f0f0; /* Color de fondo suave */
+            position: relative;
+            overflow: hidden; /* Para asegurar que el logo de fondo no cause scroll */
+        }
+
+        .background-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%; /* Ajusta el tamaño según sea necesario */
+            max-width: 500px;
+            opacity: 0.1; /* Semi-transparente */
+            z-index: 1; /* Cambiado de -1 a 1 para que aparezca sobre la página */
+            pointer-events: none; /* Para que no interfiera con clics */
+        }
+
+        .container {
+            background-color: white;
+            width: 21cm; /* Tamaño de una hoja A4 en cm */
+            height: 29.7cm; /* Tamaño de una hoja A4 en cm */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 2cm; /* Márgenes internos simulados */
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 11pt;
+            color: #333;
+        }
+
+        .header-top {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2cm; /* Espacio antes del título principal */
+        }
+
+        .header-left {
+            text-align: left;
+            font-size: 8pt;
+            line-height: 1.2;
+        }
+
+        .header-right-logo {
+            width: 120px; /* Ajusta el tamaño del logo superior derecho */
+        }
+
+        .main-title {
+            font-size: 14pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 1cm;
+            margin-bottom: 0.5cm;
+            line-height: 1.4;
+        }
+
+        .separator {
+            width: 2px;
+            height: 50px; /* Altura de la línea vertical */
+            background-color: #333;
+            margin: 1cm auto; /* Centra la línea */
+        }
+
+        .section-title {
+            font-size: 18pt;
+            font-weight: bold;
+            margin-bottom: 2cm;
+            text-transform: uppercase;
+        }
+
+        .field-group {
+            margin-bottom: 1.5cm; /* Espacio entre grupos de campos */
+            line-height: 1.6;
+        }
+
+        .field-label {
+            font-weight: bold;
+            font-size: 12pt;
+        }
+
+        .field-placeholder {
+            font-size: 12pt;
+            margin-top: 5px;
+            color: #666;
+            border-bottom: 1px dashed #ccc; /* Simula un campo vacío */
+            display: inline-block;
+            min-width: 150px; /* Ancho mínimo para el placeholder */
+            padding-bottom: 2px;
+        }
+
+        .footer-bottom {
+            position: absolute;
+            bottom: 2cm; /* Distancia desde el borde inferior */
+            width: calc(100% - 4cm); /* Ancho del padding */
+            text-align: center;
+        }
+
+        .footer-stamp {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-bottom: 1cm;
+            line-height: 1.4;
+        }
+
+        .footer-rev {
+            font-size: 9pt;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
+
+    <div class="container">
+        <div class="header-top">
+            <div class="header-left">
+                <p>Aeroenlaces Nacionales S.A de C.V</p>
+                <p>DGAC 348</p>
+            </div>
+            <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo" class="header-right-logo">
+        </div>
+
+        <div class="main-title">
+            <p>QUALITY CONTROL DEPARTMENT</p>
+            <p>BOROSCOPE INSPECTION REPORT</p>
+        </div>
+
+        <div class="separator"></div>
+
+        <h1 class="section-title">COVER SHEET</h1>
+
+        <div class="field-group">
+            <p class="field-label">AIRCRAFT MODEL</p>
+            <p class="field-placeholder">[Aircraft Model]</p>
+            <!-- Este campo será dinámico en el formulario -->
+        </div>
+
+        <div class="field-group">
+            <p class="field-label">ENGINE S/N:</p>
+            <p class="field-placeholder">[Engine S/N]</p>
+            <!-- Este campo será dinámico en el formulario -->
+        </div>
+
+        <div class="field-group">
+            <p class="field-label">A/C REGISTRATION</p>
+            <p class="field-placeholder">[Aircraft Registration]</p>
+            <!-- Este campo será dinámico en el formulario -->
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-stamp">
+                <p class="field-placeholder">[Inspector Stamp]</p>
+                <p>INSPECTOR STAMP</p>
+                <!-- Este campo será dinámico en el formulario -->
+            </div>
+            <p class="footer-rev">F-QC-018 REV 3 (05-OCT-2021)</p>
+        </div>
+    </div>
+</body>
+</html>
