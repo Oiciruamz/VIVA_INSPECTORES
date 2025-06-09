@@ -507,9 +507,6 @@ class BSI_PW1100_Generator {
                                             </pic:nvPicPr>
                                             <pic:blipFill>
                                                 <a:blip r:embed="${relationshipId}"/>
-                                                <a:stretch>
-                                                    <a:fillRect/>
-                                                </a:stretch>
                                             </pic:blipFill>
                                             <pic:spPr>
                                                 <a:xfrm>

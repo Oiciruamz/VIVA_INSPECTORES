@@ -27,7 +27,7 @@
             width: 50%; /* Ajusta el tamaño según sea necesario */
             max-width: 500px;
             opacity: 0.1; /* Semi-transparente */
-            z-index: 1; /* Sobre la página */
+            z-index: 0; /* Visible pero detrás del contenido */
             pointer-events: none;
         }
 
@@ -165,7 +165,7 @@
         /* Footer Styles - Replicated from previous pages, with page number adjustment */
         .footer-section {
             position: absolute;
-            bottom: 2cm;
+            bottom: 0.3cm;
             width: calc(100% - 4cm);
             display: flex;
             justify-content: space-between;
@@ -184,9 +184,8 @@
     </style>
 </head>
 <body>
-    <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
-
     <div class="container">
+        <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
         <!-- Header Section -->
         <div class="header-section">
             <div style="width: 80px;"></div> <!-- Espaciador para alinear el título -->
@@ -209,10 +208,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><span class="placeholder">[Work Order Number]</span></td>
-                    <td><span class="placeholder">[Aircraft Registration]</span></td>
-                    <td><span class="placeholder">[Engine S/N]</span></td>
-                    <td><span class="placeholder">[Inspected By]</span></td>
+                    <td><span class="placeholder" id="preview-work_order_number">[Work Order Number]</span></td>
+                    <td><span class="placeholder" id="preview-aircraft_registration">[Aircraft Registration]</span></td>
+                    <td><span class="placeholder" id="preview-engine_sn">[Engine S/N]</span></td>
+                    <td><span class="placeholder" id="preview-inspected_by">[Inspected By]</span></td>
                 </tr>
                 <tr>
                     <th>Internal ID</th>
@@ -221,10 +220,10 @@
                     <th>Inspection Date</th>
                 </tr>
                 <tr>
-                    <td><span class="placeholder">[Internal ID]</span></td>
-                    <td><span class="placeholder">[Aircraft Model]</span></td>
-                    <td><span class="placeholder">[Station]</span></td>
-                    <td><span class="placeholder">[Date of BSI]</span></td>
+                    <td><span class="placeholder" id="preview-nombre_registrado">[Internal ID]</span></td>
+                    <td><span class="placeholder" id="preview-aircraft_model">[Aircraft Model]</span></td>
+                    <td><span class="placeholder" id="preview-station">[Station]</span></td>
+                    <td><span class="placeholder" id="preview-date_of_bsi">[Date of BSI]</span></td>
                 </tr>
             </tbody>
         </table>
@@ -234,7 +233,7 @@
             <thead>
                 <tr>
                     <th style="width: 25%;">References Used</th>
-                    <td colspan="3"><span class="placeholder">[References Used]</span></td>
+                    <td colspan="3"><span class="placeholder" id="preview-references_used">[References Used]</span></td>
                 </tr>
             </thead>
         </table>
@@ -251,18 +250,18 @@
             <tbody>
                 <tr>
                     <td>TIC LPT STAGE 1</td>
-                    <td><span class="placeholder">[LPT STAGE 1]</span></td>
-                    <td><span class="placeholder">[LPT Stage 1 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-lpt_s1_status">[LPT STAGE 1]</span></td>
+                    <td><span class="placeholder" id="preview-lpt_s1_remarks">[LPT Stage 1 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>LPT STAGE 2</td>
-                    <td><span class="placeholder">[LPT STAGE 2]</span></td>
-                    <td><span class="placeholder">[LPT Stage 2 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-lpt_s2_status">[LPT STAGE 2]</span></td>
+                    <td><span class="placeholder" id="preview-lpt_s2_remarks">[LPT Stage 2 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>LPT STAGE 3</td>
-                    <td><span class="placeholder">[LPT STAGE 3]</span></td>
-                    <td><span class="placeholder">[LPT Stage 3 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-lpt_s3_status">[LPT STAGE 3]</span></td>
+                    <td><span class="placeholder" id="preview-lpt_s3_remarks">[LPT Stage 3 Finding / Remarks]</span></td>
                 </tr>
             </tbody>
         </table>
@@ -270,13 +269,13 @@
         <!-- FINAL DISPOSITION Section -->
         <div class="disposition-section">
             <p class="disposition-title">FINAL DISPOSITION</p>
-            <div class="disposition-box"><span class="placeholder">[FINAL DISPOSITION]</span></div>
+            <div class="disposition-box"><span class="placeholder" id="preview-final_disposition">[FINAL DISPOSITION]</span></div>
         </div>
 
         <!-- ENGINE STATUS AFTER BSI Section -->
         <div class="engine-status-section">
             <p class="engine-status-title">ENGINE STATUS AFTER BSI</p>
-            <div class="engine-status-box"><span class="placeholder">[Engine Status BSI]</span></div>
+            <div class="engine-status-box"><span class="placeholder" id="preview-engine_status_bsi">[Engine Status BSI]</span></div>
         </div>
 
         <!-- Footer Section -->

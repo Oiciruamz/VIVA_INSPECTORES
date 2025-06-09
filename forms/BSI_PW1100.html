@@ -6,6 +6,43 @@
     <title>BSI Report Form (PW 1100 ENGINES)</title>
     <link rel="stylesheet" href="../css/forms-common.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Librerías para generación de PDF -->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    
+    <!-- Librerías de respaldo por si las primeras fallan -->
+    <script>
+        // Verificar si jsPDF se cargó correctamente, si no, cargar desde CDN alternativo
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined') {
+                    console.warn('⚠️ jsPDF principal no se cargó, intentando CDN alternativo...');
+                    const script = document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+                    script.onload = function() {
+                        console.log('✅ jsPDF cargado desde CDN alternativo');
+                    };
+                    script.onerror = function() {
+                        console.error('❌ Error cargando jsPDF desde CDN alternativo');
+                    };
+                    document.head.appendChild(script);
+                }
+                
+                if (typeof window.html2canvas === 'undefined') {
+                    console.warn('⚠️ html2canvas principal no se cargó, intentando CDN alternativo...');
+                    const script = document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+                    script.onload = function() {
+                        console.log('✅ html2canvas cargado desde CDN alternativo');
+                    };
+                    script.onerror = function() {
+                        console.error('❌ Error cargando html2canvas desde CDN alternativo');
+                    };
+                    document.head.appendChild(script);
+                }
+            }, 1000);
+        });
+    </script>
     <script src="../js/select-search.js"></script>
     <script src="../js/form-handlers/BSI_PW1100_Handler.js"></script>
 </head>
@@ -636,26 +673,48 @@
                 </div>
             </fieldset>
 
+            <fieldset>
+                <legend>Imágenes Adjuntas</legend>
+                <div class="form-group">
+                    <label for="inspection_images">📷 Subir imágenes de la inspección </label>
+                    <input type="file" id="inspection_images" name="inspection_images" 
+                           multiple accept="image/*" class="image-upload-input">
+                    <p class="form-note">📁 Puede subir múltiples imágenes. Formatos soportados: JPG, PNG, GIF. Máximo 10MB por imagen.</p>
+                    <div id="image-preview" class="image-preview-container"></div>
+                </div>
+            </fieldset>
+
             <div class="button-group">
-                <button type="submit">Submit Form</button>
-                <button type="button" id="previewDocBtn">Previsualizar Documento</button>
+                <div class="button-row">
+                    <button type="button" class="action-button secondary clear-form-btn">🗑️ Limpiar Formulario</button>
+                    <button type="button" class="action-button warning debug-fill-btn">Llenar Formulario (Debug)</button>
+                </div>
+                <div class="button-row">
+                    <button type="button" class="action-button primary generate-word-btn">📄 Generar Documento Word</button>
+                    <button type="button" id="previewDocBtn" class="action-button primary preview-doc-btn">Previsualizar Documento</button>
+                </div>
             </div>
         </form>
     </div>
 
-    <!-- Modal para previsualización de PDF -->
+    <!-- Modal para previsualización profesional -->
     <div id="previewModal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
+            <div class="modal-header">
+                <h2>Previsualización del Documento BSI PW1100</h2>
+                <span class="close-button">&times;</span>
+            </div>
             <div class="modal-body">
+                <button class="floating-close-btn" type="button">&times;</button>
                 <div id="previewPagesContainer">
                     <!-- Las páginas de previsualización se cargarán aquí -->
                 </div>
-                <div class="page-navigation">
-                    <button id="prevPageBtn">Anterior</button>
-                    <span id="pageNumberDisplay">Página 1 de 5</span>
-                    <button id="nextPageBtn">Siguiente</button>
-                </div>
+            </div>
+            <div class="page-navigation">
+                <button id="prevPageBtn">Anterior</button>
+                <span id="pageNumberDisplay">Página 1 de 5</span>
+                <button id="nextPageBtn">Siguiente</button>
+                <button id="downloadPdfBtn" class="download-pdf-btn">📄 Descargar como PDF</button>
             </div>
         </div>
     </div>
@@ -727,6 +786,85 @@
         @keyframes animatetop {
             from {top:-300px; opacity:0} 
             to {top:0; opacity:1}
+        }
+
+        /* Estilos para el botón de descarga PDF */
+        .download-pdf-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .download-pdf-btn:hover {
+            background: #c0392b;
+        }
+
+        .download-pdf-btn:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        /* Estilos para manejar texto largo en previsualización */
+        .modal-body {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-all;
+        }
+
+        #previewPagesContainer {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        /* Estilos específicos para elementos de texto en previsualización */
+        .modal-body textarea,
+        .modal-body input[type="text"],
+        .modal-body .text-content,
+        .modal-body td,
+        .modal-body p {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            max-width: 100%;
+            white-space: pre-wrap;
+        }
+
+        /* Estilos para la navegación de páginas */
+        .page-navigation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-top: 1px solid #ddd;
+        }
+
+        .page-navigation button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .page-navigation button:hover:not(:disabled) {
+            background: #2980b9;
+        }
+
+        .page-navigation button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
         }
     </style>
 

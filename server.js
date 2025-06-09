@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs-extra');
 const multer = require('multer');
-const libre = require('libreoffice-convert');
 const { promisify } = require('util');
 
 // Importar los generadores de documentos
@@ -48,8 +47,6 @@ const upload = multer({
         fileSize: 10 * 1024 * 1024 // 10MB máximo
     }
 });
-
-const convertAsync = promisify(libre.convert);
 
 // Rutas principales
 app.get('/', (req, res) => {

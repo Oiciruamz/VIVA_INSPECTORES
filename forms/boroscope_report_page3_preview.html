@@ -27,7 +27,7 @@
             width: 50%; /* Ajusta el tamaño según sea necesario */
             max-width: 500px;
             opacity: 0.1; /* Semi-transparente */
-            z-index: 1; /* Sobre la página */
+            z-index: 0; /* Visible pero detrás del contenido */
             pointer-events: none;
         }
 
@@ -125,7 +125,7 @@
         /* Footer Styles - Replicated from Page 2, with page number adjustment */
         .footer-section {
             position: absolute;
-            bottom: 2cm;
+            bottom: 0.3cm;
             width: calc(100% - 4cm);
             display: flex;
             justify-content: space-between;
@@ -144,9 +144,8 @@
     </style>
 </head>
 <body>
-    <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
-
     <div class="container">
+        <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
         <!-- Header Section -->
         <div class="header-section">
             <div style="width: 80px;"></div> <!-- Espaciador para alinear el título -->
@@ -169,10 +168,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><span class="placeholder">[Work Order Number]</span></td>
-                    <td><span class="placeholder">[Aircraft Registration]</span></td>
-                    <td><span class="placeholder">[Engine S/N]</span></td>
-                    <td><span class="placeholder">[Inspected By]</span></td>
+                    <td><span class="placeholder" id="preview-work_order_number">[Work Order Number]</span></td>
+                    <td><span class="placeholder" id="preview-aircraft_registration">[Aircraft Registration]</span></td>
+                    <td><span class="placeholder" id="preview-engine_sn">[Engine S/N]</span></td>
+                    <td><span class="placeholder" id="preview-inspected_by">[Inspected By]</span></td>
                 </tr>
                 <tr>
                     <th>Internal ID</th>
@@ -181,10 +180,10 @@
                     <th>Inspection Date</th>
                 </tr>
                 <tr>
-                    <td><span class="placeholder">[Internal ID]</span></td>
-                    <td><span class="placeholder">[Aircraft Model]</span></td>
-                    <td><span class="placeholder">[Station]</span></td>
-                    <td><span class="placeholder">[Date of BSI]</span></td>
+                    <td><span class="placeholder" id="preview-nombre_registrado">[Internal ID]</span></td>
+                    <td><span class="placeholder" id="preview-aircraft_model">[Aircraft Model]</span></td>
+                    <td><span class="placeholder" id="preview-station">[Station]</span></td>
+                    <td><span class="placeholder" id="preview-date_of_bsi">[Date of BSI]</span></td>
                 </tr>
             </tbody>
         </table>
@@ -194,7 +193,7 @@
             <thead>
                 <tr>
                     <th style="width: 25%;">References Used</th>
-                    <td colspan="3"><span class="placeholder">[References Used]</span></td>
+                    <td colspan="3"><span class="placeholder" id="preview-references_used">[References Used]</span></td>
                 </tr>
             </thead>
         </table>
@@ -211,58 +210,58 @@
             <tbody>
                 <tr>
                     <td>HPC STAGE 7</td>
-                    <td><span class="placeholder">[HPC STAGE 7]</span></td>
-                    <td><span class="placeholder">[HPC Stage 7 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage7_status">[HPC STAGE 7]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage7_remarks">[HPC Stage 7 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>HPC STAGE 8</td>
-                    <td><span class="placeholder">[HPC STAGE 8]</span></td>
-                    <td><span class="placeholder">[HPC Stage 8 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage8_status">[HPC STAGE 8]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage8_remarks">[HPC Stage 8 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>IGNITER SEGMENT</td>
-                    <td><span class="placeholder">[IGNITER SEGMENT]</span></td>
-                    <td><span class="placeholder">[Igniter Segment Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-igniter_status">[IGNITER SEGMENT]</span></td>
+                    <td><span class="placeholder" id="preview-igniter_remarks">[Igniter Segment Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>FUEL NOZZLE</td>
-                    <td><span class="placeholder">[FUEL NOZZLE]</span></td>
-                    <td><span class="placeholder">[Fuel Noozle Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-fuelnozzle_status">[FUEL NOZZLE]</span></td>
+                    <td><span class="placeholder" id="preview-fuelnozzle_remarks">[Fuel Nozzle Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>CCH INNER LINER</td>
-                    <td><span class="placeholder">[CCH INNER LINER]</span></td>
-                    <td><span class="placeholder">[CCH Inner Liner Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-cch_inner_status">[CCH INNER LINER]</span></td>
+                    <td><span class="placeholder" id="preview-cch_inner_remarks">[CCH Inner Liner Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>CCH OUTER LINER</td>
-                    <td><span class="placeholder">[CCH OUTER LINER]</span></td>
-                    <td><span class="placeholder">[CCH Outer Liner Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-cch_outer_status">[CCH OUTER LINER]</span></td>
+                    <td><span class="placeholder" id="preview-cch_outer_remarks">[CCH Outer Liner Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>SHIP LAP</td>
-                    <td><span class="placeholder">[SHIP LAP]</span></td>
-                    <td><span class="placeholder">[Shiplap Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-shiplap_status">[SHIP LAP]</span></td>
+                    <td><span class="placeholder" id="preview-shiplap_remarks">[Shiplap Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>SHIP LAP DIMENSIONS</td>
-                    <td><span class="placeholder">[SHIP LAP DIMENSIONS]</span></td>
+                    <td><span class="placeholder" id="preview-shiplap_dimensions">[SHIP LAP DIMENSIONS]</span></td>
                     <td></td> <!-- No hay un campo para findings/remarks aquí en la imagen -->
                 </tr>
                 <tr>
                     <td>HPT VANE</td>
-                    <td><span class="placeholder">[HPT VANE]</span></td>
-                    <td><span class="placeholder">[HPT VANE Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpt_vane_status">[HPT VANE]</span></td>
+                    <td><span class="placeholder" id="preview-hpt_vane_remarks">[HPT VANE Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>HPT STAGE 1</td>
-                    <td><span class="placeholder">[HPT STAGE 1]</span></td>
-                    <td><span class="placeholder">[HPT Stage 1 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpt_s1_status">[HPT STAGE 1]</span></td>
+                    <td><span class="placeholder" id="preview-hpt_s1_remarks">[HPT Stage 1 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>HPT STAGE 2</td>
-                    <td><span class="placeholder">[HPT STAGE 2]</span></td>
-                    <td><span class="placeholder">[HPT Stage 2 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpt_s2_status">[HPT STAGE 2]</span></td>
+                    <td><span class="placeholder" id="preview-hpt_s2_remarks">[HPT Stage 2 Finding / Remarks]</span></td>
                 </tr>
             </tbody>
         </table>

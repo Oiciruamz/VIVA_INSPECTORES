@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boroscope Inspection Report - Page 5 (Images)</title>
+    <title>Boroscope Inspection Report - Images</title>
     <link rel="stylesheet" href="../css/forms-common.css">
     <style>
         body {
@@ -11,43 +11,46 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align to top */
+            flex-direction: column;
+            align-items: center;
             min-height: 100vh;
-            background-color: #f0f0f0; /* Color de fondo suave */
+            background-color: #f0f0f0;
             position: relative;
-            overflow: hidden;
         }
 
         .background-logo {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 50%; /* Ajusta el tamaño según sea necesario */
+            width: 50%;
             max-width: 500px;
-            opacity: 0.1; /* Semi-transparente */
-            z-index: 1; /* Sobre la página */
+            opacity: 0.1;
+            z-index: 0;
             pointer-events: none;
         }
 
-        .container {
+        .page-container {
             background-color: white;
-            width: 21cm; /* Tamaño de una hoja A4 en cm */
-            height: 29.7cm; /* Tamaño de una hoja A4 en cm */
+            width: 21cm;
+            height: 29.7cm;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 2cm; /* Márgenes internos simulados */
+            padding: 2cm;
             box-sizing: border-box;
             position: relative;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
             font-size: 10pt;
             color: #333;
+            margin-bottom: 2cm;
+            page-break-after: always;
         }
 
-        /* Header Styles - Replicated from previous pages */
+        .page-container:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Header Styles */
         .header-section {
             width: 100%;
             display: flex;
@@ -69,7 +72,7 @@
             height: auto;
         }
 
-        /* Table Styles - Replicated from previous pages */
+        /* Table Styles */
         .info-table {
             width: 100%;
             border-collapse: collapse;
@@ -107,42 +110,71 @@
         .support-images-section {
             width: 100%;
             text-align: left;
-            margin-top: 1cm;
-            margin-bottom: 1cm;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .support-images-title {
             font-size: 12pt;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .images-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
         }
 
         .image-item {
             display: flex;
-            align-items: flex-start; /* Alinea la imagen y el texto al principio */
-            margin-bottom: 15px;
+            align-items: flex-start;
+            margin-bottom: 5px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
 
         .image-thumbnail {
-            width: 150px; /* Tamaño fijo para la imagen */
-            height: 100px;
-            border: 1px solid #ddd;
-            margin-right: 15px;
-            object-fit: contain; /* Asegura que la imagen se ajuste sin distorsionarse */
+            width: 200px;
+            height: 150px;
+            border: 2px solid #ccc;
+            margin-right: 20px;
+            object-fit: contain;
+            border-radius: 3px;
+            background-color: white;
         }
 
         .image-description {
             flex-grow: 1;
-            font-size: 10pt;
-            line-height: 1.4;
-            word-break: break-word; /* Romper palabras largas si es necesario */
-            padding-top: 5px; /* Pequeño ajuste para alinear con la imagen */
+            font-size: 11pt;
+            line-height: 1.5;
+            word-break: break-word;
+            padding-top: 10px;
         }
 
-        /* Footer Styles - Replicated from previous pages, with page number adjustment */
+        .image-description strong {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* No images message */
+        .no-images-message {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+            font-size: 12pt;
+        }
+
+        /* Footer Styles */
         .footer-section {
             position: absolute;
-            bottom: 2cm;
+            bottom: 0.3cm;
             width: calc(100% - 4cm);
             display: flex;
             justify-content: space-between;
@@ -158,94 +190,297 @@
         .footer-right {
             text-align: right;
         }
+
+        /* Print styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .page-container {
+                box-shadow: none;
+                margin-bottom: 0;
+            }
+            
+            .background-logo {
+                display: none;
+            }
+        }
+
+        /* Hidden by default - will be shown dynamically */
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
     <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
-
-    <div class="container">
-        <!-- Header Section -->
-        <div class="header-section">
-            <div style="width: 80px;"></div> <!-- Espaciador para alinear el título -->
-            <div class="header-title">
-                <p>QUALITY CONTROL DEPARTMENT</p>
-                <p>BOROSCOPE INSPECTION REPORT</p>
-            </div>
-            <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo" class="header-logo">
-        </div>
-
-        <!-- General Information Table (Replicated for consistency) -->
-        <table class="info-table">
-            <thead>
-                <tr>
-                    <th>Work Order Number</th>
-                    <th>A/C Registration</th>
-                    <th>Engine S/N</th>
-                    <th>Inspected By</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="placeholder">[Work Order Number]</span></td>
-                    <td><span class="placeholder">[Aircraft Registration]</span></td>
-                    <td><span class="placeholder">[Engine S/N]</span></td>
-                    <td><span class="placeholder">[Inspected By]</span></td>
-                </tr>
-                <tr>
-                    <th>Internal ID</th>
-                    <th>A/C Model</th>
-                    <th>Station</th>
-                    <th>Inspection Date</th>
-                </tr>
-                <tr>
-                    <td><span class="placeholder">[Internal ID]</span></td>
-                    <td><span class="placeholder">[Aircraft Model]</span></td>
-                    <td><span class="placeholder">[Station]</span></td>
-                    <td><span class="placeholder">[Date of BSI]</span></td>
-                </tr>
-            </tbody>
-        </table>
-
-        <!-- References Used (Replicated for consistency) -->
-        <table class="info-table" style="margin-bottom: 1cm;">
-            <thead>
-                <tr>
-                    <th style="width: 25%;">References Used</th>
-                    <td colspan="3"><span class="placeholder">[References Used]</span></td>
-                </tr>
-            </thead>
-        </table>
-
-        <!-- SUPPORT IMAGES Section -->
-        <div class="support-images-section">
-            <p class="support-images-title">SUPPORT IMAGES</p>
-            
-            <!-- Placeholder para imágenes dinámicas -->
-            <div id="dynamic-images-container">
-                <!-- Ejemplo de cómo se vería una imagen y su descripción -->
-                <div class="image-item">
-                    <img src="https://via.placeholder.com/150x100?text=Imagen+1" alt="Imagen 1" class="image-thumbnail">
-                    <p class="image-description"><span class="placeholder">[Descripción de Imagen 1]</span></p>
+    
+    <!-- Pages will be generated dynamically here -->
+    <div id="pages-container">
+        <!-- Default message when no images -->
+        <div class="page-container" id="no-images-page">
+            <!-- Header Section -->
+            <div class="header-section">
+                <div style="width: 80px;"></div>
+                <div class="header-title">
+                    <p>QUALITY CONTROL DEPARTMENT</p>
+                    <p>BOROSCOPE INSPECTION REPORT</p>
                 </div>
-                <div class="image-item">
-                    <img src="https://via.placeholder.com/150x100?text=Imagen+2" alt="Imagen 2" class="image-thumbnail">
-                    <p class="image-description"><span class="placeholder">[Descripción de Imagen 2]</span></p>
-                </div>
-                <!-- ... se agregarían más elementos de imagen/descripción aquí dinámicamente -->
+                <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo" class="header-logo">
             </div>
-        </div>
 
-        <!-- Footer Section -->
-        <div class="footer-section">
-            <div class="footer-left">
-                <p>F-QC-018 REV 3 (05-OCT-2021)</p>
-                <p>Page 5 of 5</p>
+            <!-- General Information Table -->
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>Work Order Number</th>
+                        <th>A/C Registration</th>
+                        <th>Engine S/N</th>
+                        <th>Inspected By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="placeholder" id="preview-work_order_number">[Work Order Number]</span></td>
+                        <td><span class="placeholder" id="preview-aircraft_registration">[Aircraft Registration]</span></td>
+                        <td><span class="placeholder" id="preview-engine_sn">[Engine S/N]</span></td>
+                        <td><span class="placeholder" id="preview-inspected_by">[Inspected By]</span></td>
+                    </tr>
+                    <tr>
+                        <th>Internal ID</th>
+                        <th>A/C Model</th>
+                        <th>Station</th>
+                        <th>Inspection Date</th>
+                    </tr>
+                    <tr>
+                        <td><span class="placeholder" id="preview-nombre_registrado">[Internal ID]</span></td>
+                        <td><span class="placeholder" id="preview-aircraft_model">[Aircraft Model]</span></td>
+                        <td><span class="placeholder" id="preview-station">[Station]</span></td>
+                        <td><span class="placeholder" id="preview-date_of_bsi">[Date of BSI]</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- References Used -->
+            <table class="info-table" style="margin-bottom: 1cm;">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">References Used</th>
+                        <td colspan="3"><span class="placeholder" id="preview-references_used">[References Used]</span></td>
+                    </tr>
+                </thead>
+            </table>
+
+            <!-- SUPPORT IMAGES Section -->
+            <div class="support-images-section">
+                <p class="support-images-title">SUPPORT IMAGES</p>
+                <div class="no-images-message">
+                    No se han adjuntado imágenes a este reporte.
+                </div>
             </div>
-            <div class="footer-right">
-                <p>Aeroenlaces Nacionales S.A de C.V</p>
-                <p>DGAC 348</p>
+
+            <!-- Footer Section -->
+            <div class="footer-section">
+                <div class="footer-left">
+                    <p>F-QC-018 REV 3 (05-OCT-2021)</p>
+                    <p>Page 5 of 5</p>
+                </div>
+                <div class="footer-right">
+                    <p>Aeroenlaces Nacionales S.A de C.V</p>
+                    <p>DGAC 348</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Array to store images data
+        let imagesData = [];
+        let currentPageNumber = 5; // Starting page number for images
+
+        // Function to add an image
+        function addImage(imageSrc, description) {
+            imagesData.push({
+                src: imageSrc,
+                description: description
+            });
+            renderPages();
+        }
+
+        // Function to remove all images
+        function clearImages() {
+            imagesData = [];
+            renderPages();
+        }
+
+        // Function to create a page template
+        function createPageTemplate(pageNum, totalPages) {
+            return `
+                <div class="page-container">
+                    <!-- Header Section -->
+                    <div class="header-section">
+                        <div style="width: 80px;"></div>
+                        <div class="header-title">
+                            <p>QUALITY CONTROL DEPARTMENT</p>
+                            <p>BOROSCOPE INSPECTION REPORT</p>
+                        </div>
+                        <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo" class="header-logo">
+                    </div>
+
+                    <!-- General Information Table -->
+                    <table class="info-table">
+                        <thead>
+                            <tr>
+                                <th>Work Order Number</th>
+                                <th>A/C Registration</th>
+                                <th>Engine S/N</th>
+                                <th>Inspected By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="placeholder">[Work Order Number]</span></td>
+                                <td><span class="placeholder">[Aircraft Registration]</span></td>
+                                <td><span class="placeholder">[Engine S/N]</span></td>
+                                <td><span class="placeholder">[Inspected By]</span></td>
+                            </tr>
+                            <tr>
+                                <th>Internal ID</th>
+                                <th>A/C Model</th>
+                                <th>Station</th>
+                                <th>Inspection Date</th>
+                            </tr>
+                            <tr>
+                                <td><span class="placeholder">[Internal ID]</span></td>
+                                <td><span class="placeholder">[Aircraft Model]</span></td>
+                                <td><span class="placeholder">[Station]</span></td>
+                                <td><span class="placeholder">[Date of BSI]</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- References Used -->
+                    <table class="info-table" style="margin-bottom: 1cm;">
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">References Used</th>
+                                <td colspan="3"><span class="placeholder">[References Used]</span></td>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <!-- SUPPORT IMAGES Section -->
+                    <div class="support-images-section">
+                        <p class="support-images-title">SUPPORT IMAGES</p>
+                        <div class="images-content" id="images-content-${pageNum}">
+                            <!-- Images will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Footer Section -->
+                    <div class="footer-section">
+                        <div class="footer-left">
+                            <p>F-QC-018 REV 3 (05-OCT-2021)</p>
+                            <p>Page ${pageNum} of ${totalPages}</p>
+                        </div>
+                        <div class="footer-right">
+                            <p>Aeroenlaces Nacionales S.A de C.V</p>
+                            <p>DGAC 348</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to render all pages with images
+        function renderPages() {
+            const container = document.getElementById('pages-container');
+            const noImagesPage = document.getElementById('no-images-page');
+
+            if (imagesData.length === 0) {
+                // Show no images page
+                noImagesPage.style.display = 'flex';
+                // Remove any existing image pages
+                const existingPages = container.querySelectorAll('.page-container:not(#no-images-page)');
+                existingPages.forEach(page => page.remove());
+                return;
+            }
+
+            // Hide no images page
+            noImagesPage.style.display = 'none';
+
+            // Remove existing image pages
+            const existingPages = container.querySelectorAll('.page-container:not(#no-images-page)');
+            existingPages.forEach(page => page.remove());
+
+            // Calculate number of pages needed (2 images per page)
+            const imagesPerPage = 2;
+            const totalImagePages = Math.ceil(imagesData.length / imagesPerPage);
+            const totalPages = currentPageNumber - 1 + totalImagePages; // Total pages in document
+
+            // Create pages
+            for (let pageIndex = 0; pageIndex < totalImagePages; pageIndex++) {
+                const pageNum = currentPageNumber + pageIndex;
+                const pageHtml = createPageTemplate(pageNum, totalPages);
+                
+                // Create page element
+                const pageElement = document.createElement('div');
+                pageElement.innerHTML = pageHtml;
+                const pageContainer = pageElement.firstElementChild;
+                
+                // Add images to this page
+                const imagesContentDiv = pageContainer.querySelector(`#images-content-${pageNum}`);
+                const startIndex = pageIndex * imagesPerPage;
+                const endIndex = Math.min(startIndex + imagesPerPage, imagesData.length);
+                
+                for (let imgIndex = startIndex; imgIndex < endIndex; imgIndex++) {
+                    const imageData = imagesData[imgIndex];
+                    const imageItem = document.createElement('div');
+                    imageItem.className = 'image-item';
+                    imageItem.innerHTML = `
+                        <img src="${imageData.src}" alt="Imagen ${imgIndex + 1}" class="image-thumbnail">
+                        <div class="image-description">
+                            <strong>Imagen ${imgIndex + 1}:</strong>
+                            ${imageData.description}
+                        </div>
+                    `;
+                    imagesContentDiv.appendChild(imageItem);
+                }
+                
+                container.appendChild(pageContainer);
+            }
+        }
+
+        // Example function to load images (you can call this from your main form)
+        function loadExampleImages() {
+            // Clear existing images
+            clearImages();
+            
+            // Add some example images to demonstrate multiple pages (2 images per page)
+            addImage('https://via.placeholder.com/200x150?text=ENGINE+ID+PLATE&bg=lightblue', 'ENGINE ID PLATE - S/N V16759 - Esta imagen muestra la placa de identificación del motor donde se puede observar claramente el número de serie del motor.');
+            addImage('https://via.placeholder.com/200x150?text=LPC+1.5+STAGE&bg=lightgreen', 'LPC 1.5 STAGE - NO DAMAGE - Inspección del compresor de baja presión etapa 1.5, no se observan daños visibles en los álabes.');
+            addImage('https://via.placeholder.com/200x150?text=HPT+STAGE+1&bg=lightcoral', 'HPT STAGE 1 - MINOR WEAR - Turbina de alta presión etapa 1, se observa desgaste menor en los bordes de los álabes que requiere monitoreo.');
+            addImage('https://via.placeholder.com/200x150?text=COMBUSTOR+LINER&bg=lightyellow', 'COMBUSTOR LINER - GOOD CONDITION - El liner de la cámara de combustión se encuentra en buenas condiciones operacionales.');
+            addImage('https://via.placeholder.com/200x150?text=FUEL+NOZZLES&bg=lightpink', 'FUEL NOZZLES - CLEAN - Las boquillas de combustible están limpias y en buen estado operacional sin obstrucciones.');
+            addImage('https://via.placeholder.com/200x150?text=COMPRESSOR+BLADES&bg=lightgray', 'COMPRESSOR BLADES - NO DAMAGE - Álabes del compresor sin daños aparentes, superficie lisa y uniforme en toda la sección.');
+            addImage('https://via.placeholder.com/200x150?text=TURBINE+VANES&bg=lightsteelblue', 'TURBINE VANES - ACCEPTABLE - Las vanes de la turbina presentan desgaste normal dentro de los límites aceptables.');
+            addImage('https://via.placeholder.com/200x150?text=BEARING+HOUSING&bg=lightgoldenrodyellow', 'BEARING HOUSING - INSPECTED - Carcasa del rodamiento inspeccionada, sin grietas ni deformaciones visibles en la estructura.');
+        }
+
+        // Function to be called from parent form to update images
+        function updateImagesFromForm(images) {
+            clearImages();
+            images.forEach((imageData, index) => {
+                addImage(imageData.src, imageData.description);
+            });
+        }
+
+        // Initialize with no images
+        renderPages();
+
+        // Uncomment the line below to see the example with multiple images
+        loadExampleImages();
+    </script>
 </body>
 </html> 

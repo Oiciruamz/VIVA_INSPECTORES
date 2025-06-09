@@ -27,7 +27,7 @@
             width: 50%; /* Ajusta el tamaño según sea necesario */
             max-width: 500px;
             opacity: 0.1; /* Semi-transparente */
-            z-index: 1; /* Sobre la página */
+            z-index: 0; /* Visible pero detrás del contenido */
             pointer-events: none;
         }
 
@@ -125,7 +125,7 @@
         /* Footer Styles */
         .footer-section {
             position: absolute;
-            bottom: 2cm;
+            bottom: 0.3cm;
             width: calc(100% - 4cm);
             display: flex;
             justify-content: space-between;
@@ -144,9 +144,8 @@
     </style>
 </head>
 <body>
-    <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
-
     <div class="container">
+        <img src="../img/Viva_Logo.svg.png" alt="Vivaaerobus Logo Fondo" class="background-logo">
         <!-- Header Section -->
         <div class="header-section">
             <div style="width: 80px;"></div> <!-- Espaciador para alinear el título -->
@@ -169,10 +168,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><span class="placeholder">[Work Order Number]</span></td>
-                    <td><span class="placeholder">[Aircraft Registration]</span></td>
-                    <td><span class="placeholder">[Engine S/N]</span></td>
-                    <td><span class="placeholder">[Inspected By]</span></td>
+                    <td><span class="placeholder" id="preview-work_order_number">[Work Order Number]</span></td>
+                    <td><span class="placeholder" id="preview-aircraft_registration">[Aircraft Registration]</span></td>
+                    <td><span class="placeholder" id="preview-engine_sn">[Engine S/N]</span></td>
+                    <td><span class="placeholder" id="preview-inspected_by">[Inspected By]</span></td>
                 </tr>
                 <tr>
                     <th>Internal ID</th>
@@ -181,20 +180,20 @@
                     <th>Inspection Date</th>
                 </tr>
                 <tr>
-                    <td><span class="placeholder">[Internal ID]</span></td>
-                    <td><span class="placeholder">[Aircraft Model]</span></td>
-                    <td><span class="placeholder">[Station]</span></td>
-                    <td><span class="placeholder">[Date of BSI]</span></td>
+                    <td><span class="placeholder" id="preview-nombre_registrado">[Internal ID]</span></td>
+                    <td><span class="placeholder" id="preview-aircraft_model">[Aircraft Model]</span></td>
+                    <td><span class="placeholder" id="preview-station">[Station]</span></td>
+                    <td><span class="placeholder" id="preview-date_of_bsi">[Date of BSI]</span></td>
                 </tr>
             </tbody>
         </table>
 
         <!-- References Used -->
-        <table class="info-table" style="margin-bottom: 2cm;">
+        <table class="info-table" style="margin-bottom: 1cm;">
             <thead>
                 <tr>
                     <th style="width: 25%;">References Used</th>
-                    <td colspan="3"><span class="placeholder">[References Used]</span></td>
+                    <td colspan="3"><span class="placeholder" id="preview-references_used">[References Used]</span></td>
                 </tr>
             </thead>
         </table>
@@ -211,60 +210,59 @@
             <tbody>
                 <tr>
                     <td>LPC STAGE 1</td>
-                    <td><span class="placeholder">[LPC STAGE 1]</span></td>
-                    <td><span class="placeholder">[LPC Stage 1 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-lpc_stage1_status">[LPC STAGE 1]</span></td>
+                    <td><span class="placeholder" id="preview-lpc_stage1_remarks">[LPC Stage 1 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>LPC STAGE 2</td>
-                    <td><span class="placeholder">[LPC STAGE 2]</span></td>
-                    <td><span class="placeholder">[LPC Stage 2 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-lpc_stage2_status">[LPC STAGE 2]</span></td>
+                    <td><span class="placeholder" id="preview-lpc_stage2_remarks">[LPC Stage 2 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>LPC STAGE 3</td>
-                    <td><span class="placeholder">[LPC STAGE 3]</span></td>
-                    <td><span class="placeholder">[LPC Stage 3 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-lpc_stage3_status">[LPC STAGE 3]</span></td>
+                    <td><span class="placeholder" id="preview-lpc_stage3_remarks">[LPC Stage 3 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td># 3 BEARING FRONT SEAL</td>
-                    <td><span class="placeholder">[# 3 BEARING FRONT SEAL]</span></td>
-                    <td><span class="placeholder">[# 3 Bearing front Seal Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-bearing3_front_status">[# 3 BEARING FRONT SEAL]</span></td>
+                    <td><span class="placeholder" id="preview-bearing3_front_remarks">[# 3 Bearing front Seal Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td># 3 BEARING REAR SEAL</td>
-                    <td><span class="placeholder">[# 3 BEARING REAR SEAL]</span></td>
-                    <td><span class="placeholder">[# 3 Bearing rear Seal Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-bearing3_rear_status">[# 3 BEARING REAR SEAL]</span></td>
+                    <td><span class="placeholder" id="preview-bearing3_rear_remarks">[# 3 Bearing rear Seal Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>HPC STAGE 1</td>
-                    <td><span class="placeholder">[HPC STAGE 1]</span></td>
-                    <td><span class="placeholder">[HPC Stage 1 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage1_status">[HPC STAGE 1]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage1_remarks">[HPC Stage 1 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>HPC STAGE 2</td>
-                    <td><span class="placeholder">[HPC STAGE 2]</span></td>
-                    <td><span class="placeholder">[HPC Stage 2 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage2_status">[HPC STAGE 2]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage2_remarks">[HPC Stage 2 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>HPC STAGE 3</td>
-                    <td><span class="placeholder">[HPC STAGE 3]</span></td>
-                    <td><span class="placeholder">[HPC Stage 3 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage3_status">[HPC STAGE 3]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage3_remarks">[HPC Stage 3 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>HPC STAGE 4</td>
-                    <td><span class="placeholder">[HPC STAGE 4]</span></td>
-                    <td><span class="placeholder">[HPC Stage 4 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage4_status">[HPC STAGE 4]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage4_remarks">[HPC Stage 4 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>HPC STAGE 5</td>
-                    <td><span class="placeholder">[HPC STAGE 5]</span></td>
-                    <td><span class="placeholder">[HPC Stage 5 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage5_status">[HPC STAGE 5]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage5_remarks">[HPC Stage 5 Finding / Remarks]</span></td>
                 </tr>
                 <tr>
                     <td>HPC STAGE 6</td>
-                    <td><span class="placeholder">[HPC STAGE 6]</span></td>
-                    <td><span class="placeholder">[HPC Stage 6 Finding / Remarks]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage6_status">[HPC STAGE 6]</span></td>
+                    <td><span class="placeholder" id="preview-hpc_stage6_remarks">[HPC Stage 6 Finding / Remarks]</span></td>
                 </tr>
-                <!-- ... more rows for other stages as needed, up to HPC Stage 8, then HPT, LPT, IGNITER, FUEL NOZZLE, CCH, SHIP LAP, BEARING -->
             </tbody>
         </table>
 

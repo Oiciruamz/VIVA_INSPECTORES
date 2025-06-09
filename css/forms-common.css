@@ -551,87 +551,416 @@ select.original-select {
     background-color: #c82333;
 }
 
-/* Modal Styles */
+/* ===== MODAL DE PREVISUALIZACIÓN PROFESIONAL ===== */
+
+/* Modal principal - Pantalla completa optimizada */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 2000;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fondo más oscuro para mejor contraste */
+    backdrop-filter: blur(3px); /* Efecto de desenfoque moderno */
+    justify-content: center;
+    align-items: center;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Bloquear scroll del body cuando modal está abierto */
+body.modal-open {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* CRÍTICO: Asegurar que el body mantenga sus estilos correctos cuando NO hay modal */
+body:not(.modal-open) {
+    overflow: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 20px !important;
+    background-color: var(--body-bg-color) !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+    color: var(--text-color) !important;
+    line-height: 1.6 !important;
+    display: block !important;
+    position: static !important;
+    justify-content: unset !important;
+    align-items: unset !important;
+    min-height: unset !important;
+}
+
+/* Contenedor principal del modal - 10% más pequeño, sin header */
+.modal-content {
+    background-color: #ffffff;
+    width: 85vw; /* 10% más pequeño */
+    max-width: 1100px; /* Límite máximo ajustado */
+    height: 85vh; /* 10% más pequeño */
+    margin: 7.5vh auto; /* Centrado vertical */
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalSlideIn 0.4s ease-out;
+    position: relative;
+}
+
+/* Header del modal - OCULTO para maximizar espacio del documento */
+.modal-header {
+    display: none !important; /* Completamente oculto */
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-header h2:before {
+    content: "📄";
+    font-size: 1.2em;
+}
+
+/* Botón de cerrar mejorado */
+.close-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    line-height: 1;
 }
 
-.modal-content {
-    background-color: #fefefe;
-    margin: auto; /* Center the modal vertically and horizontally */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 90%; /* Adjust as needed */
-    max-width: 800px; /* Max width for larger screens */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    position: relative;
-    border-radius: 8px;
+.close-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: rotate(90deg);
 }
 
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
+/* Cuerpo del modal - Área de visualización optimizada */
 .modal-body {
-    padding: 10px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-color: #f8f9fa;
+    position: relative; /* Para posicionar el botón X */
 }
 
+/* Botón X flotante real para cerrar modal */
+.floating-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.floating-close-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+/* Contenedor de páginas - MAXIMIZADO para mostrar el documento */
 #previewPagesContainer {
-    border: 1px solid #ccc;
-    min-height: 500px; /* Adjust as needed */
-    overflow-y: auto;
-    margin-bottom: 15px;
-    background-color: white;
-    position: relative; /* Needed for absolute positioning of children */
-}
-
-#previewPagesContainer > div {
-    display: none; /* Hide all pages by default, show current with JS */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px; /* Menos padding para más espacio */
+    overflow: hidden;
+    background: #f8f9fa; /* Fondo más simple */
+    position: relative;
     width: 100%;
     height: 100%;
 }
 
+/* BRUTAL: Estilo minimalista para páginas */
+.preview-page {
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    margin: 10px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: auto;
+    position: relative;
+    
+    /* Por defecto oculto */
+    display: none;
+    
+    /* JavaScript controlará las dimensiones */
+}
+
+/* BRUTAL: Página activa visible */
+.preview-page.active {
+    display: block !important;
+}
+
+/* BRUTAL: Sin contenedores complicados - el contenido se adapta solo */
+.preview-page .page-content-container {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.preview-page .container {
+    /* ESCALA OPTIMIZADA para mejor legibilidad */
+    transform: scale(0.8);
+    transform-origin: top center;
+    margin: 0 auto;
+}
+
+/* LIMPIO: Sin interferencias - dejar que el diseño original funcione */
+
+/* LIMPIO: Responsividad simple */
+@media (max-width: 900px) {
+    .preview-page .container {
+        transform: scale(0.5);
+    }
+}
+
+/* Contenido de la página - FORZAR que se vea desde el inicio */
+#previewPagesContainer > div.preview-page * {
+    font-family: Arial, sans-serif !important;
+    color: #333 !important;
+    line-height: 1.4 !important;
+}
+
+/* BRUTAL: Logo simple */
+.preview-page .background-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+/* CRÍTICO: Asegurar que el contenido se posicione desde el inicio */
+#previewPagesContainer > div.preview-page > * {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+}
+
+/* Resetear cualquier posicionamiento problemático */
+#previewPagesContainer > div.preview-page body,
+#previewPagesContainer > div.preview-page html {
+    margin: 0 !important;
+    padding: 0 !important;
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+}
+
+/* Navegación de páginas - Compacta pero funcional */
 .page-navigation {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-top: 1px solid #dee2e6;
+    padding: 15px 25px; /* Más compacto para maximizar espacio de documento */
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 10px 0;
+    gap: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    min-height: 70px; /* Más pequeño */
 }
 
 .page-navigation button {
-    background-color: #4CAF50; /* Green */
+    background: linear-gradient(135deg, var(--primary-color) 0%, #005a9e 100%);
     color: white;
-    padding: 8px 15px;
     border: none;
-    border-radius: 4px;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 120, 212, 0.3);
+    min-width: 120px;
+    justify-content: center;
+}
+
+.page-navigation button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 120, 212, 0.4);
+}
+
+.page-navigation button:active {
+    transform: translateY(0);
+}
+
+.page-navigation button:disabled {
+    background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: 0 2px 8px rgba(108, 117, 125, 0.2);
+}
+
+.page-navigation button:before {
     font-size: 16px;
 }
 
-.page-navigation button:hover {
-    opacity: 0.8;
+.page-navigation button#prevPageBtn:before {
+    content: "⬅️";
 }
 
+.page-navigation button#nextPageBtn:after {
+    content: "➡️";
+}
+
+/* Indicador de página - Elegante y claro */
 #pageNumberDisplay {
-    font-weight: bold;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 150px;
+    justify-content: center;
+}
+
+#pageNumberDisplay:before {
+    content: "📖";
+    font-size: 18px;
+}
+
+/* Indicador de carga profesional */
+.loading-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    z-index: 3000;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Animaciones profesionales */
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes modalSlideIn {
+    from { 
+        opacity: 0;
+        transform: scale(0.9) translateY(-50px);
+    }
+    to { 
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Scroll personalizado para el contenedor de páginas */
+#previewPagesContainer::-webkit-scrollbar {
+    width: 12px;
+}
+
+#previewPagesContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+
+#previewPagesContainer::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #005a9e 100%);
+    border-radius: 6px;
+}
+
+#previewPagesContainer::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #005a9e 0%, var(--primary-color) 100%);
+}
+
+/* Estilos para el grupo de botones 2x2 */
+.button-group {
+    display: grid;
+    grid-template-columns: 1fr; /* Una columna para las filas */
+    gap: 20px; /* Espacio entre las filas de botones */
+    margin-top: 30px;
+    padding: 15px; /* Añade un poco de espacio alrededor del grupo de botones */
+    border: 1px solid var(--section-border-color);
+    border-radius: 4px;
+    background-color: #fdfdfd;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-around; /* Distribuye los botones equitativamente con espacio a su alrededor */
+    gap: 15px; /* Espacio entre los botones dentro de una fila */
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas más pequeñas */
+}
+
+/* Asegura que los botones tomen el mismo espacio */
+.button-row .action-button {
+    flex: 1; /* Permite que los botones crezcan y se encojan */
+    min-width: 180px; /* Ancho mínimo para evitar que se hagan demasiado pequeños */
+    max-width: 250px; /* Ancho máximo para evitar que se hagan demasiado anchos */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total del elemento */
 }
