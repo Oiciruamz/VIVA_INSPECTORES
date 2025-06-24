@@ -570,7 +570,7 @@ class PdfManager {
                             data.cell.styles.textColor = [0, 100, 0];
                         } else if (text.includes('damage')) {
                             data.cell.styles.textColor = [150, 0, 0];
-             } else {
+                        } else {
                             data.cell.styles.textColor = [0, 0, 0];
                         }
                     }
@@ -722,7 +722,7 @@ class PdfManager {
             },
             columnStyles: {
                 0: { cellWidth: 38, fillColor: [242, 242, 242], fontStyle: 'bold' },
-                1: { cellWidth: 105 },
+                1: { cellWidth: 25 },
                 2: { cellWidth: 117 }
             },
             alternateRowStyles: { fillColor: [255, 255, 255] },
@@ -862,7 +862,7 @@ class PdfManager {
             },
             columnStyles: {
                 0: { cellWidth: 38, fillColor: [242, 242, 242], fontStyle: 'bold' },
-                1: { cellWidth: 105 },
+                1: { cellWidth: 25 },
                 2: { cellWidth: 117 }
             },
             alternateRowStyles: { fillColor: [255, 255, 255] },
@@ -1025,8 +1025,8 @@ class PdfManager {
         }
 
         const tableData = [];
-        const imageWidth = 70; // mm
-        const imageHeight = 50; // mm
+        const imageWidth = 90; // mm - Aumentado de 70 a 90
+        const imageHeight = 65; // mm - Aumentado de 50 a 65
         
         images.forEach((imgData, index) => {
             const globalIndex = startIndex + index;
@@ -1049,18 +1049,18 @@ class PdfManager {
             margin: { left: 15, right: 15 },
             columnStyles: {
                 0: { 
-                    cellWidth: imageWidth + 10, // Un poco más ancho para padding (80mm)
+                    cellWidth: imageWidth + 10, // Un poco más ancho para padding (100mm)
                     halign: 'center',
                     valign: 'middle'
                 },
                 1: { 
-                    cellWidth: 105, // Resto del espacio para descripción
+                    cellWidth: 80, // Ajustado para acomodar imagen más grande
                     valign: 'top',
                     halign: 'left'
                 }
             },
             styles: {
-                minCellHeight: imageHeight + 5, // Altura mínima para acomodar imagen
+                minCellHeight: imageHeight + 10, // Altura mínima para acomodar imagen más grande
                 fontSize: 9,
                 cellPadding: 5,
                 overflow: 'linebreak',
