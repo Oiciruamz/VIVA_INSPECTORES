@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Near Reporting Rate</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .header .period {
+            font-size: 16px;
+            opacity: 0.9;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .filters-bar {
+            background: #f8f9fc;
+            padding: 20px 35px;
+            border-bottom: 1px solid #e3e6f0;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #5a5c69;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border: 2px solid #e3e6f0;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            min-width: 150px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .clear-filters {
+            background: #e74a3b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-left: auto;
+        }
+
+        .clear-filters:hover {
+            background: #c0392b;
+            transform: translateY(-1px);
+        }
+
+        .main-content {
+            padding: 35px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .kpi-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .kpi-card.total { border-left-color: #3498db; }
+        .kpi-card.ontime { border-left-color: #27ae60; }
+        .kpi-card.delayed { border-left-color: #f39c12; }
+        .kpi-card.percentage { border-left-color: #9b59b6; }
+
+        .kpi-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .kpi-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #5a5c69;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .kpi-card.total .kpi-icon { background: rgba(52, 152, 219, 0.1); color: #3498db; }
+        .kpi-card.ontime .kpi-icon { background: rgba(39, 174, 96, 0.1); color: #27ae60; }
+        .kpi-card.delayed .kpi-icon { background: rgba(243, 156, 18, 0.1); color: #f39c12; }
+        .kpi-card.percentage .kpi-icon { background: rgba(155, 89, 182, 0.1); color: #9b59b6; }
+
+        .kpi-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .kpi-trend {
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .trend-up { color: #27ae60; }
+        .trend-down { color: #e74a3b; }
+        .trend-neutral { color: #95a5a6; }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .chart-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+
+        .gauge-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+        }
+
+        .gauge-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .gauge-label {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .gauge-ranges {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+        }
+
+        .gauge-range {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+
+        .range-low { background: #ffebee; color: #c62828; }
+        .range-medium { background: #fff3e0; color: #ef6c00; }
+        .range-high { background: #e8f5e8; color: #2e7d32; }
+
+        .data-table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .table-header {
+            background: #f8f9fc;
+            padding: 20px 25px;
+            border-bottom: 1px solid #e3e6f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e3e6f0;
+        }
+
+        th {
+            background: #f8f9fc;
+            font-weight: 600;
+            color: #5a5c69;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fc;
+        }
+
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-on-time {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-delayed {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .response-time {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .response-good { color: #27ae60; }
+        .response-warning { color: #f39c12; }
+        .response-poor { color: #e74a3b; }
+
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .summary-info h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .summary-value {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters-bar {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+            
+            .filter-group {
+                flex-direction: row;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 Near Reporting (NRs) Rate Dashboard</h1>
+            <div class="period">MTY - Período Actual</div>
+        </div>
+
+        <!-- Filters Bar -->
+        <div class="filters-bar">
+            <div class="filter-group">
+                <label class="filter-label">🏢 Número de Empleado</label>
+                <select class="filter-select" id="employeeFilter">
+                    <option>Todos los empleados</option>
+                    <option>5516916</option>
+                    <option>5516578</option>
+                    <option>5516839</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">📅 Trimestre</label>
+                <select class="filter-select" id="quarterFilter">
+                    <option>Q1 2025</option>
+                    <option>Q4 2024</option>
+                    <option>Q3 2024</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filter-label">🎯 Región</label>
+                <select class="filter-select" id="regionFilter">
+                    <option>MTY</option>
+                    <option>CDMX</option>
+                    <option>GDL</option>
+                </select>
+            </div>
+            <button class="clear-filters" onclick="clearAllFilters()">🔄 Limpiar Filtros</button>
+        </div>
+
+        <div class="main-content">
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card total">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Total de Reportes</span>
+                        <div class="kpi-icon">📋</div>
+                    </div>
+                    <div class="kpi-value">8</div>
+                    <div class="kpi-trend trend-up">
+                        ↗️ +12% vs mes anterior
+                    </div>
+                </div>
+
+                <div class="kpi-card ontime">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Reportes a Tiempo</span>
+                        <div class="kpi-icon">✅</div>
+                    </div>
+                    <div class="kpi-value">4</div>
+                    <div class="kpi-trend trend-neutral">
+                        ➡️ Sin cambios
+                    </div>
+                </div>
+
+                <div class="kpi-card delayed">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Reportes Retrasados</span>
+                        <div class="kpi-icon">⚠️</div>
+                    </div>
+                    <div class="kpi-value">4</div>
+                    <div class="kpi-trend trend-down">
+                        ↘️ -8% vs mes anterior
+                    </div>
+                </div>
+
+                <div class="kpi-card percentage">
+                    <div class="kpi-header">
+                        <span class="kpi-title">Cumplimiento de KPI</span>
+                        <div class="kpi-icon">🎯</div>
+                    </div>
+                    <div class="kpi-value">64%</div>
+                    <div class="kpi-trend trend-up">
+                        ↗️ +5% vs mes anterior
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3 class="chart-title">📈 Historial de Rendimiento</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h3 class="chart-title">🎯 Rendimiento Actual</h3>
+                    <div class="gauge-container">
+                        <div class="gauge-value">64%</div>
+                        <div class="gauge-label">Cumplimiento Actual</div>
+                        <div class="gauge-ranges">
+                            <span class="gauge-range range-low">0-60% Bajo</span>
+                            <span class="gauge-range range-medium">61-80% Medio</span>
+                            <span class="gauge-range range-high">81-100% Alto</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="data-table-container">
+                <div class="table-header">
+                    <h3 class="table-title">📊 Detalle de Reportes</h3>
+                    <div class="table-actions">
+                        <button class="btn btn-secondary">📤 Exportar</button>
+                        <button class="btn btn-secondary">🔍 Filtrar</button>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID Empleado</th>
+                                <th>Matrícula Vuelo</th>
+                                <th>Fecha de Llegada</th>
+                                <th>Estado</th>
+                                <th>Emisión del NR</th>
+                                <th>Tiempo Respuesta</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>5516916</td>
+                                <td>VIV 4187</td>
+                                <td>09/02/2025 03:25</td>
+                                <td><span class="status-badge status-delayed">Retrasado</span></td>
+                                <td>09/02/2025 03:29</td>
+                                <td><span class="response-time response-good">0:04</span></td>
+                            </tr>
+                            <tr>
+                                <td>5516578</td>
+                                <td>VIA 677</td>
+                                <td>08/01/2025 03:02</td>
+                                <td><span class="status-badge status-delayed">Retrasado</span></td>
+                                <td>08/01/2025 04:02</td>
+                                <td><span class="response-time response-warning">1:00</span></td>
+                            </tr>
+                            <tr>
+                                <td>5516839</td>
+                                <td>VAJ 4289</td>
+                                <td>24/02/2025 04:18</td>
+                                <td><span class="status-badge status-on-time">A Tiempo</span></td>
+                                <td>24/02/2025 05:47</td>
+                                <td><span class="response-time response-warning">1:29</span></td>
+                            </tr>
+                            <tr>
+                                <td>5516567</td>
+                                <td>VVO 4319</td>
+                                <td>08/03/2025 05:39</td>
+                                <td><span class="status-badge status-delayed">Retrasado</span></td>
+                                <td>08/03/2025 09:32</td>
+                                <td><span class="response-time response-poor">3:53</span></td>
+                            </tr>
+                            <tr>
+                                <td>5516826</td>
+                                <td>VAU 7295</td>
+                                <td>16/02/2025 03:32</td>
+                                <td><span class="status-badge status-delayed">Retrasado</span></td>
+                                <td>16/02/2025 07:35</td>
+                                <td><span class="response-time response-poor">4:03</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Summary Card -->
+            <div class="summary-card">
+                <div class="summary-info">
+                    <h3>⏱️ Promedio de Tiempo de Respuesta</h3>
+                    <p>Tiempo promedio para generar reportes NR</p>
+                </div>
+                <div class="summary-value">5.89 min</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Performance Chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                datasets: [{
+                    label: 'Cumplimiento (%)',
+                    data: [75, 82, 68, 45, 89, 72, 95, 78, 64, 88, 76, 92],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                            color: 'rgba(0,0,0,0.1)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                elements: {
+                    point: {
+                        hoverRadius: 8
+                    }
+                }
+            }
+        });
+
+        // Clear filters function
+        function clearAllFilters() {
+            document.getElementById('employeeFilter').selectedIndex = 0;
+            document.getElementById('quarterFilter').selectedIndex = 0;
+            document.getElementById('regionFilter').selectedIndex = 0;
+        }
+
+        // Add hover effects and interactions
+        document.querySelectorAll('.kpi-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'translateY(-2px)';
+                }, 100);
+            });
+        });
+
+        // Table sorting functionality
+        document.querySelectorAll('th').forEach(header => {
+            header.style.cursor = 'pointer';
+            header.addEventListener('click', function() {
+                console.log('Sorting by:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>

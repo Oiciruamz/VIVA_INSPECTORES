@@ -725,6 +725,46 @@ body:not(.modal-open) {
     display: block !important;
 }
 
+/* Estilos específicos para la generación de PDF */
+.pdf-page {
+    width: 21cm !important;
+    height: 29.7cm !important;
+    background: #ffffff !important;
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    page-break-after: always;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    transform: none !important;
+    zoom: 1 !important;
+}
+
+.pdf-page * {
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #333 !important;
+}
+
+.pdf-page .page-content-container,
+.pdf-page .container,
+.pdf-page .page-container {
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    background: transparent !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    padding: 2cm !important;
+    transform: none !important;
+    zoom: 1 !important;
+}
+
 /* BRUTAL: Sin contenedores complicados - el contenido se adapta solo */
 .preview-page .page-content-container {
     width: 100%;
@@ -963,4 +1003,109 @@ body:not(.modal-open) {
     min-width: 180px; /* Ancho mínimo para evitar que se hagan demasiado pequeños */
     max-width: 250px; /* Ancho máximo para evitar que se hagan demasiado anchos */
     box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total del elemento */
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA PDF - PRESERVAR DISEÑO DEL PREVIEW ===== */
+.pdf-page .container {
+    background-color: white !important;
+    width: 21cm !important;
+    height: 29.7cm !important;
+    box-shadow: none !important;
+    padding: 2cm !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    font-size: 11pt !important;
+    color: #333 !important;
+    margin: 0 !important;
+    transform: none !important;
+}
+
+.pdf-page .background-logo {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 50% !important;
+    max-width: 500px !important;
+    opacity: 0.1 !important;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+.pdf-page .header-top {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    margin-bottom: 2cm !important;
+}
+
+.pdf-page .header-left {
+    text-align: left !important;
+    font-size: 8pt !important;
+    line-height: 1.2 !important;
+}
+
+.pdf-page .header-right-logo {
+    width: 120px !important;
+}
+
+.pdf-page .main-title {
+    font-size: 14pt !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    margin-top: 1cm !important;
+    margin-bottom: 0.5cm !important;
+    line-height: 1.4 !important;
+}
+
+.pdf-page .section-title {
+    font-size: 18pt !important;
+    font-weight: bold !important;
+    margin-bottom: 1.5cm !important;
+    text-transform: uppercase !important;
+}
+
+.pdf-page .field-group {
+    line-height: 1.6 !important;
+    margin-bottom: 1.5cm !important;
+}
+
+.pdf-page .field-label {
+    font-weight: bold !important;
+    font-size: 12pt !important;
+    margin-bottom: 0.3cm !important;
+}
+
+.pdf-page .field-placeholder {
+    font-size: 12pt !important;
+    margin-top: 0.3cm !important;
+    color: #666 !important;
+    border-bottom: 1px dashed #ccc !important;
+    display: inline-block !important;
+    min-width: 150px !important;
+    padding-bottom: 2px !important;
+}
+
+.pdf-page .footer-bottom {
+    position: absolute !important;
+    bottom: 0.3cm !important;
+    width: calc(100% - 4cm) !important;
+    text-align: center !important;
+}
+
+.pdf-page .footer-stamp {
+    font-size: 12pt !important;
+    font-weight: bold !important;
+    margin-bottom: 1cm !important;
+    line-height: 1.4 !important;
+}
+
+.pdf-page .footer-rev {
+    font-size: 9pt !important;
+    color: #555 !important;
 }
